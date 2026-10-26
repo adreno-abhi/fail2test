@@ -1,0 +1,74 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fail2test"
+version = "0.1.0.dev0"
+description = "Turn agent failures into reviewed, portable regression tests."
+readme = "README.md"
+requires-python = ">=3.12,<3.15"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"]
+keywords = ["agents", "regression", "pytest", "testing", "ai"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Typing :: Typed",
+]
+dependencies = ["pydantic>=2.10,<3", "rfc8785>=0.1.4,<1", "typer>=0.16,<1"]
+
+[project.scripts]
+fail2test = "fail2test.cli:app"
+
+[project.optional-dependencies]
+pytest = ["pytest>=8.3,<10"]
+langgraph = ["langgraph>=1.2,<2", "langchain-core>=1.4,<2"]
+
+[dependency-groups]
+browser = ["playwright>=1.55,<2"]
+dev = [
+  "pytest>=8.3,<10",
+  "pytest-cov>=6,<8",
+  "coverage>=7.10,<8",
+  "hypothesis>=6.120,<7",
+  "jsonschema>=4.23,<5",
+  "mypy>=1.15,<2",
+  "ruff>=0.11,<1",
+  "mkdocs>=1.6,<2",
+  "pyyaml>=6,<7",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fail2test"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/", "tests/", "scripts/", "examples/", "docs/", ".github/", "README.md", "LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md", "DCO", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "SECURITY.md", "SUPPORT.md", "GOVERNANCE.md", "MAINTAINERS.md", "PUBLISHING.md", "CHANGELOG.md", "pyproject.toml", "uv.lock", "mkdocs.yml", "AGENTS.md", "PLAN.md", "ROADMAP.md"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = ["integration: end-to-end subprocess or framework integration"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/fail2test"]
+
+[tool.coverage.run]
+source = ["fail2test"]
+branch = true
+patch = ["subprocess"]
+
+[tool.coverage.report]
+show_missing = true

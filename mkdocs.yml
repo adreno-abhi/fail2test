@@ -1,0 +1,12 @@
+site_name: Fail2Test
+docs_dir: docs/site
+site_dir: site
+theme: readthedocs
+nav:
+  - Overview: index.md
+  - Quickstart: quickstart.md
+  - Local browser UI: local-ui.md
+  - AI suggestions: ai-suggestions.md
+  - Integration: integration.md
+  - Compatibility and acceptance: compatibility.md
+  - Contracts and safety: contracts.md

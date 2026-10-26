@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fail2test:case-schema:0.1",
+  "title": "Fail2Test proposed alpha case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "case_id", "title", "mode", "input", "model_fixtures", "tool_fixtures", "rules", "provenance"],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "case_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,127}$"},
+    "title": {"type": "string", "minLength": 1, "maxLength": 256},
+    "mode": {"const": "fixture"},
+    "input": {"type": "object"},
+    "model_fixtures": {"type": "array", "items": {"$ref": "#/$defs/modelFixture"}},
+    "tool_fixtures": {"type": "array", "items": {"$ref": "#/$defs/toolFixture"}},
+    "rules": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/rule"}},
+    "provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_kind", "source_reference", "requirement", "sanitization"],
+      "properties": {
+        "source_kind": {"enum": ["synthetic", "imported"]},
+        "source_reference": {"type": "string", "minLength": 1},
+        "requirement": {"type": "string", "minLength": 1},
+        "sanitization": {"enum": ["synthetic", "review_required", "reviewed"]}
+      }
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]{0,127}$"},
+    "pointer": {"type": "string", "pattern": "^(?:/(?:[^~/]|~[01])*)*$"},
+    "modelFixture": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "slot", "ordinal", "request", "response"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "slot": {"$ref": "#/$defs/id"},
+        "ordinal": {"type": "integer", "minimum": 0},
+        "request": {"type": "object"}, "response": {}
+      }
+    },
+    "toolFixture": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "tool", "arguments", "response", "repeatable"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"}, "tool": {"$ref": "#/$defs/id"},
+        "arguments": {"type": "object"}, "response": {}, "repeatable": {"type": "boolean"}
+      }
+    },
+    "rule": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "kind", "tool", "group_by", "min_calls", "max_calls", "require_any", "requirement"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"}, "kind": {"const": "tool_call_count"},
+            "tool": {"$ref": "#/$defs/id"},
+            "group_by": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/pointer"}},
+            "min_calls": {"type": "integer", "minimum": 0}, "max_calls": {"type": "integer", "minimum": 0},
+            "require_any": {"type": "boolean"}, "requirement": {"type": "string", "minLength": 1}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "kind", "tool", "pointer", "operator", "expected", "require_any", "requirement"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"}, "kind": {"const": "tool_argument"}, "tool": {"$ref": "#/$defs/id"},
+            "pointer": {"$ref": "#/$defs/pointer"}, "operator": {"enum": ["eq", "in", "lte", "gte"]},
+            "expected": {}, "require_any": {"type": "boolean"}, "requirement": {"type": "string", "minLength": 1}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "kind", "tool", "requirement"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"}, "kind": {"const": "forbidden_tool"},
+            "tool": {"$ref": "#/$defs/id"}, "requirement": {"type": "string", "minLength": 1}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "kind", "pointer", "operator", "expected", "requirement"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"}, "kind": {"const": "output"},
+            "pointer": {"$ref": "#/$defs/pointer"}, "operator": {"enum": ["eq", "in", "lte", "gte"]},
+            "expected": {}, "requirement": {"type": "string", "minLength": 1}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["id", "kind", "max_calls", "requirement"],
+          "properties": {
+            "id": {"$ref": "#/$defs/id"}, "kind": {"const": "max_tool_calls"},
+            "max_calls": {"type": "integer", "minimum": 0}, "requirement": {"type": "string", "minLength": 1}
+          }
+        }
+      ]
+    }
+  }
+}

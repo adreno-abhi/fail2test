@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-26",
+  "method": "Single automated installed-wheel trials with cached dependencies and concurrent host activity. Human reading, coding, fixture capture and prerequisite installation excluded. Different wheel hashes reflect the dependency-metadata correction during this step; runtime source did not change.",
+  "human_targets_observed": false,
+  "provider_calls": false,
+  "trials": [
+    {
+      "platform": "Windows-11-10.0.26300-SP0",
+      "installed": {
+        "python": "3.12.13",
+        "version": "0.1.0.dev0"
+      },
+      "wheel_sha256": "9aa1523f9d1a34065f332d37638e7493da0307730e9336a5e301ac723b70ed13",
+      "cli_workflow_seconds": 29.249,
+      "installed_ui_seconds": null,
+      "native_workflow_seconds": 36.514,
+      "total_seconds": 73.125,
+      "native_runner_nonblank_lines": 10,
+      "production_factory_changes_required_for_injected_example": 0,
+      "same_export_detected_bug_and_passed_fix": true,
+      "human_usability_measured": false,
+      "provider_calls": false
+    },
+    {
+      "platform": "Windows-11-10.0.26300-SP0",
+      "installed": {
+        "python": "3.13.5",
+        "version": "0.1.0.dev0"
+      },
+      "wheel_sha256": "2b9a9dce210dc294a1665ed652f0beb9e70b5ab0014c3b0049dad4151cc6e4ba",
+      "cli_workflow_seconds": 9.744,
+      "installed_ui_seconds": 6.862,
+      "native_workflow_seconds": 21.357,
+      "total_seconds": 41.743,
+      "native_runner_nonblank_lines": 10,
+      "production_factory_changes_required_for_injected_example": 0,
+      "same_export_detected_bug_and_passed_fix": true,
+      "human_usability_measured": false,
+      "provider_calls": false
+    },
+    {
+      "platform": "Windows-11-10.0.26300-SP0",
+      "installed": {
+        "python": "3.14.3",
+        "version": "0.1.0.dev0"
+      },
+      "wheel_sha256": "9aa1523f9d1a34065f332d37638e7493da0307730e9336a5e301ac723b70ed13",
+      "cli_workflow_seconds": 29.632,
+      "installed_ui_seconds": null,
+      "native_workflow_seconds": 39.048,
+      "total_seconds": 75.31,
+      "native_runner_nonblank_lines": 10,
+      "production_factory_changes_required_for_injected_example": 0,
+      "same_export_detected_bug_and_passed_fix": true,
+      "human_usability_measured": false,
+      "provider_calls": false
+    },
+    {
+      "platform": "Linux-5.15.146.1-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+      "installed": {
+        "python": "3.12.13",
+        "version": "0.1.0.dev0"
+      },
+      "wheel_sha256": "2b9a9dce210dc294a1665ed652f0beb9e70b5ab0014c3b0049dad4151cc6e4ba",
+      "cli_workflow_seconds": 5.776,
+      "installed_ui_seconds": null,
+      "native_workflow_seconds": 11.41,
+      "total_seconds": 19.114,
+      "native_runner_nonblank_lines": 10,
+      "production_factory_changes_required_for_injected_example": 0,
+      "same_export_detected_bug_and_passed_fix": true,
+      "human_usability_measured": false,
+      "provider_calls": false
+    },
+    {
+      "platform": "Linux-5.15.146.1-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+      "installed": {
+        "python": "3.13.12",
+        "version": "0.1.0.dev0"
+      },
+      "wheel_sha256": "9aa1523f9d1a34065f332d37638e7493da0307730e9336a5e301ac723b70ed13",
+      "cli_workflow_seconds": 7.025,
+      "installed_ui_seconds": null,
+      "native_workflow_seconds": 13.108,
+      "total_seconds": 23.506,
+      "native_runner_nonblank_lines": 10,
+      "production_factory_changes_required_for_injected_example": 0,
+      "same_export_detected_bug_and_passed_fix": true,
+      "human_usability_measured": false,
+      "provider_calls": false
+    },
+    {
+      "platform": "Linux-5.15.146.1-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+      "installed": {
+        "python": "3.14.3",
+        "version": "0.1.0.dev0"
+      },
+      "wheel_sha256": "2b9a9dce210dc294a1665ed652f0beb9e70b5ab0014c3b0049dad4151cc6e4ba",
+      "cli_workflow_seconds": 5.98,
+      "installed_ui_seconds": null,
+      "native_workflow_seconds": 11.852,
+      "total_seconds": 19.923,
+      "native_runner_nonblank_lines": 10,
+      "production_factory_changes_required_for_injected_example": 0,
+      "same_export_detected_bug_and_passed_fix": true,
+      "human_usability_measured": false,
+      "provider_calls": false
+    }
+  ]
+}

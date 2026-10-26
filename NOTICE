@@ -1,0 +1,15 @@
+Fail2Test
+
+Fail2Test code and documentation are licensed under Apache-2.0 unless a
+file states otherwise. Contributor copyright is retained by its owners.
+
+The adapted CODE_OF_CONDUCT.md is separately licensed under CC BY-SA 4.0
+and credits Contributor Covenant and the Organization for Ethical Source.
+DCO is a verbatim Developer Certificate of Origin 1.1 with its own notice.
+
+Third-party Python dependencies and development tools are installed
+separately and retain their own licenses. See THIRD_PARTY_NOTICES.md and
+docs/licensing/ for the locked dependency inventory and provenance.
+
+This notice does not grant trademark rights, relicense dependencies or
+claim endorsement by their authors or by the Apache Software Foundation.

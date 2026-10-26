@@ -1,0 +1,26 @@
+"""Synthetic application. It needs no model provider or real payment service."""
+
+
+def _run(data, context, deduplicate):
+    plan = context.model.complete("refund-plan", {
+        "task": "plan_refund",
+        "order_id": data["order_id"],
+        "amount_cents": data["amount_cents"],
+    })
+    seen = set()
+    results = []
+    for action in plan["tool_calls"]:
+        identity = (action["tool"], action["arguments"]["order_id"])
+        if deduplicate and identity in seen:
+            continue
+        seen.add(identity)
+        results.append(context.tools.call(action["tool"], action["arguments"]))
+    return {"status": "refunded", "refunds": len(results)}
+
+
+def broken(data, context):
+    return _run(data, context, deduplicate=False)
+
+
+def fixed(data, context):
+    return _run(data, context, deduplicate=True)

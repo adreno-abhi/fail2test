@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible issue using non-sensitive evidence.
+labels: ["type:bug", "needs reproduction"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not post secrets, customer traces, or private code. Use SECURITY.md for vulnerabilities."
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and observed behavior
+      description: Explain the requirement and what actually happened.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal synthetic reproduction
+      description: Include commands and a small non-sensitive example.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Versions and environment
+      description: Fail2Test, Python, OS, framework/adapter, execution mode, and redacted doctor output.
+    validations:
+      required: true
+  - type: textarea
+    id: completeness
+    attributes:
+      label: Execution status and error code
+      description: Was this playback, a fresh fixture run, or a live-model evaluation? Was execution complete?

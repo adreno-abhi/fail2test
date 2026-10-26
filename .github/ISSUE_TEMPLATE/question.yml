@@ -1,0 +1,22 @@
+name: Usage question or documentation improvement
+description: Ask about a supported workflow or propose clearer documentation.
+body:
+  - type: markdown
+    attributes:
+      value: "Read SUPPORT.md first. Use synthetic examples and never post keys or private evidence."
+  - type: textarea
+    id: goal
+    attributes:
+      label: What are you trying to do?
+    validations:
+      required: true
+  - type: textarea
+    id: attempted
+    attributes:
+      label: Documentation and steps already tried
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Relevant versions and synthetic example

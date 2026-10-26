@@ -1,0 +1,8 @@
+# Direct lower-bound acceptance on Python 3.12; not a replacement for uv.lock.
+# Transitive packages are resolver-selected, so record the resulting environment too.
+pydantic==2.10.0
+rfc8785==0.1.4
+typer==0.16.0
+langgraph==1.2.0
+langchain-core==1.4.0
+pytest==8.3.0

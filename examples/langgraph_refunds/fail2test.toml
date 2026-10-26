@@ -1,0 +1,9 @@
+[runners.broken]
+callable = "runner:broken"
+capabilities = ["sync", "serial", "json", "injected_model", "injected_tools"]
+timeout_seconds = 10.0
+
+[runners.fixed]
+callable = "runner:fixed"
+capabilities = ["sync", "serial", "json", "injected_model", "injected_tools"]
+timeout_seconds = 10.0

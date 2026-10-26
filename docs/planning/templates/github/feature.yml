@@ -1,0 +1,25 @@
+name: Feature proposal
+description: Propose a focused improvement tied to a real workflow.
+labels: ["type:feature", "needs design"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem and current workaround
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome and acceptance example
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and scope
+      description: Explain why the existing workflow/integrations are insufficient and what should stay out of scope.
+  - type: textarea
+    id: considerations
+    attributes:
+      label: Compatibility, privacy and maintenance considerations

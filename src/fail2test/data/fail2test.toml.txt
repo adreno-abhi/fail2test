@@ -1,0 +1,18 @@
+[runners.broken]
+callable = "refund_app:broken"
+capabilities = ["sync", "serial", "json", "injected_model", "injected_tools"]
+timeout_seconds = 10.0
+
+[runners.fixed]
+callable = "refund_app:fixed"
+capabilities = ["sync", "serial", "json", "injected_model", "injected_tools"]
+timeout_seconds = 10.0
+
+# Optional: only explicit AI preview/send actions use this provider.
+[suggestions.profiles.openrouter-free]
+kind = "openrouter"
+base_url = "https://openrouter.ai/api/v1"
+model = "openrouter/free"
+api_key_env = "OPENROUTER_API_KEY"
+free_only = true
+response_format = "json_object"

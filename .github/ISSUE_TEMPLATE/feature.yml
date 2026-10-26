@@ -1,0 +1,25 @@
+name: Feature or integration proposal
+description: Describe a developer problem and a focused acceptance example.
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and current workaround
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Proposed outcome and acceptance example
+      description: Use a synthetic example; explain who benefits and what should stay outside scope.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: textarea
+    id: impact
+    attributes:
+      label: Compatibility, privacy and maintenance impact
+      description: Consider APIs/schemas, dependency injection, provider costs and who could maintain an integration.

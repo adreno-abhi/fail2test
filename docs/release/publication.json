@@ -1,0 +1,18 @@
+{
+  "github_owner": "adreno-abhi",
+  "repository_name": "fail2test",
+  "public_maintainer": "@adreno-abhi",
+  "security_contact": "GitHub private vulnerability reporting for adreno-abhi/fail2test; pending host enablement",
+  "conduct_contact": "https://docs.github.com/en/communities/maintaining-your-safety-on-github/reporting-abuse-or-spam",
+  "contacts_verified": false,
+  "private_reporting_verified": false,
+  "host_checks_verified": false,
+  "compatibility_verified": true,
+  "first_use_verified": true,
+  "first_use_scope": "Owner confirmed the guided synthetic UI sample through saving an export. Independent adoption and human timing targets were not measured; see docs/development/owner-walkthrough.md.",
+  "history_privacy_verified": true,
+  "history_privacy_scope": "Separate initial main-only publication snapshot, with no imported development commit objects, tags, remotes or alternate object stores. Source files, root commit and reachable objects are checked against private owner addresses and credentials; see docs/development/publication-history.md. This is technical privacy verification, not source-rights or publishing approval.",
+  "initial_provenance_reviewed": false,
+  "owner_acceptance": false,
+  "notes": "The owner confirmed the target and maintainer and declined personal email publication. This separate publication checkout starts with a clean noreply root commit; original development history and its private recovery bundle remain local and are not part of this repository. Security uses GitHub private reporting after verification; conduct uses GitHub platform reporting with no private project team. Compatibility remains scoped to the documented local matrix. Host/contact checks, provenance and final owner acceptance remain pending. This file grants no publishing authorization."
+}

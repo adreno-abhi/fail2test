@@ -1,0 +1,52 @@
+{
+  "schema_version": "0.1",
+  "case_id": "duplicate-refund-demo",
+  "title": "An order must not receive the same refund twice",
+  "mode": "fixture",
+  "input": {
+    "order_id": "ord-demo-001",
+    "amount_cents": 500,
+    "context": {"irrelevant_note": "Synthetic context for reduction trials"}
+  },
+  "model_fixtures": [
+    {
+      "id": "model-plan-0",
+      "slot": "refund-plan",
+      "ordinal": 0,
+      "request": {"task": "plan_refund", "order_id": "ord-demo-001", "amount_cents": 500},
+      "response": {
+        "tool_calls": [
+          {"tool": "refund", "arguments": {"order_id": "ord-demo-001", "amount_cents": 500}},
+          {"tool": "refund", "arguments": {"order_id": "ord-demo-001", "amount_cents": 500}}
+        ]
+      }
+    }
+  ],
+  "tool_fixtures": [
+    {
+      "id": "refund-response",
+      "tool": "refund",
+      "arguments": {"order_id": "ord-demo-001", "amount_cents": 500},
+      "response": {"status": "ok", "refund_id": "refund-demo-001"},
+      "repeatable": true
+    }
+  ],
+  "rules": [
+    {
+      "id": "one-refund-per-order",
+      "kind": "tool_call_count",
+      "tool": "refund",
+      "group_by": ["/order_id"],
+      "min_calls": 1,
+      "max_calls": 1,
+      "require_any": true,
+      "requirement": "In this synthetic scenario refund exactly once for the supplied order; deduplicate repeated model actions before tool dispatch."
+    }
+  ],
+  "provenance": {
+    "source_kind": "synthetic",
+    "source_reference": "Fail2Test planning reference scenario; runner implementation pending P0",
+    "requirement": "One refund transport invocation per order in this scenario; not a claim about real payment-system idempotency.",
+    "sanitization": "synthetic"
+  }
+}

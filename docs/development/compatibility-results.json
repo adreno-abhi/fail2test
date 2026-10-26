@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-26",
+  "runtime_source_revision": "ec6d3bc23bded321278087598d4b9bc6a87c624a",
+  "scope": "Actual local tests; WSL2 is not hosted Linux CI. No macOS, ARM, Linux-browser or lowest-transitive-dependency claim.",
+  "matrix": [
+    {
+      "platform": "Ubuntu 20.04.6 WSL2 x64",
+      "python": "3.12.13",
+      "tests": 182,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 37.329,
+      "browser": false
+    },
+    {
+      "platform": "Ubuntu 20.04.6 WSL2 x64",
+      "python": "3.13.12",
+      "tests": 182,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 36.739,
+      "browser": false
+    },
+    {
+      "platform": "Ubuntu 20.04.6 WSL2 x64",
+      "python": "3.14.3",
+      "tests": 182,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 37.553,
+      "browser": false
+    },
+    {
+      "platform": "Windows 11 x64",
+      "python": "3.12.13",
+      "tests": 182,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 92.411,
+      "browser": false
+    },
+    {
+      "platform": "Windows 11 x64",
+      "python": "3.13.5",
+      "tests": 188,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 124.06,
+      "browser": true,
+      "coverage_percent": 88
+    },
+    {
+      "platform": "Windows 11 x64",
+      "python": "3.14.3",
+      "tests": 182,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 92.354,
+      "browser": false
+    },
+    {
+      "platform": "Windows 11 x64, corrected direct lower bounds",
+      "python": "3.12.13",
+      "tests": 182,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 78.391,
+      "browser": false,
+      "dependencies": {
+        "pydantic": "2.10.0",
+        "typer": "0.16.0",
+        "rfc8785": "0.1.4",
+        "langgraph": "1.2.0",
+        "langchain-core": "1.4.0",
+        "pytest": "8.3.0"
+      }
+    }
+  ]
+}

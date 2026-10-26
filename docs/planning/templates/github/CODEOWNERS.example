@@ -1,0 +1,8 @@
+# Publication draft: copy to .github/CODEOWNERS only after replacing verified handles.
+* @REPLACE_TECHNICAL_HANDLE
+/.github/workflows/ @REPLACE_RELEASE_HANDLE
+/src/fail2test/schemas/ @REPLACE_TECHNICAL_HANDLE
+/src/fail2test/execution/ @REPLACE_TECHNICAL_HANDLE
+/src/fail2test/privacy/ @REPLACE_SECURITY_HANDLE
+/LICENSE @REPLACE_STEWARD_HANDLE
+/SECURITY.md @REPLACE_SECURITY_HANDLE

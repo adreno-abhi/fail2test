@@ -1,0 +1,36 @@
+# Local environments and Python tooling
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.egg-info/
+dist/
+build/
+/site/
+/output/
+
+# Secrets and user-specific state
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.fail2test/
+raw-traces/
+local-artifacts/
+
+# Editor/OS state
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Curated synthetic fixtures and dependency lockfiles are intentionally tracked.

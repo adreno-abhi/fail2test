@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Fail2Test · Local workspace</title>
+        <link rel="stylesheet" href="/assets/app.css" />
+        <script src="/assets/app.js" defer></script>
+    </head>
+    <body>
+        <a class="skip" href="#main">Skip to case workspace</a>
+        <aside>
+            <a class="brand" href="/"
+                >f<span>2</span>t <strong>Fail2Test</strong></a
+            >
+            <p class="eyebrow">LOCAL WORKSPACE</p>
+            <h2 id="workspace-name">Connecting…</h2>
+            <button id="import-open" class="primary">+ Import evidence</button>
+            <button id="sample" hidden>Import failure.json</button>
+            <div class="case-heading">
+                <h3>Case bundles</h3>
+                <button id="refresh" aria-label="Refresh case list">↻</button>
+            </div>
+            <nav id="case-list" aria-label="Case bundles"></nav>
+            <p class="sidebar-note">
+                Your files. Your runners.<br />Fixture workflow needs no model
+                key.
+            </p>
+        </aside>
+        <main id="main" tabindex="-1">
+            <header>
+                <span>FAILURE → REGRESSION</span
+                ><span class="local">● Loopback session</span>
+            </header>
+            <div id="notice" role="status" aria-live="polite"></div>
+            <div id="error" role="alert" hidden></div>
+            <section id="welcome" class="welcome">
+                <p class="eyebrow">FROM EVIDENCE TO CONFIDENCE</p>
+                <h1>A failure worth<br />keeping as a test.</h1>
+                <p>
+                    Inspect what happened, define what should happen, and run
+                    your current code against recorded model and tool responses.
+                </p>
+                <ol>
+                    <li>
+                        <strong>Import</strong> a JSON recording of a failed
+                        agent run: its input and model/tool requests and responses.
+                    </li>
+                    <li>
+                        <strong>Review</strong> the evidence and intended
+                        behavior.
+                    </li>
+                    <li>
+                        <strong>Reproduce</strong> the failure, verify the fix,
+                        export pytest.
+                    </li>
+                </ol>
+                <button id="welcome-sample" class="primary" hidden>
+                    Try included example (no upload)
+                </button>
+                <p>
+                    The example records an agent requesting the same refund twice.
+                    Review the “refund once” rule, reproduce the broken behavior,
+                    then verify the fixed code. No API key or payment service is used.
+                </p>
+                <p class="muted">
+                    Have your own failure? Choose “Import evidence” for accepted
+                    formats and preparation instructions.
+                </p>
+                <p id="sample-setup" class="muted" hidden>
+                    This workspace has no failure.json example. To create a separate
+                    demo workspace, run <code>fail2test init demo</code>, then
+                    <code>fail2test ui --workspace demo</code> in your terminal.
+                </p>
+            </section>
+            <section id="case-workspace" hidden>
+                <div class="case-title">
+                    <div>
+                        <p class="eyebrow" id="case-path"></p>
+                        <h1 id="case-title"></h1>
+                    </div>
+                    <span id="case-state" class="badge"></span>
+                </div>
+                <p id="case-digest" class="digest"></p>
+                <div role="tablist" aria-label="Case workflow" id="tabs">
+                    <button
+                        role="tab"
+                        id="tab-evidence"
+                        aria-controls="panel-evidence"
+                        aria-selected="true"
+                    >
+                        01 Evidence
+                    </button>
+                    <button
+                        role="tab"
+                        id="tab-review"
+                        aria-controls="panel-review"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        02 Review
+                    </button>
+                    <button
+                        role="tab"
+                        id="tab-execution"
+                        aria-controls="panel-execution"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        03 Execute
+                    </button>
+                    <button
+                        role="tab"
+                        id="tab-reduction"
+                        aria-controls="panel-reduction"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        04 Reduce
+                    </button>
+                    <button
+                        role="tab"
+                        id="tab-export"
+                        aria-controls="panel-export"
+                        aria-selected="false"
+                        tabindex="-1"
+                    >
+                        05 Export
+                    </button>
+                </div>
+                <section
+                    role="tabpanel"
+                    id="panel-evidence"
+                    aria-labelledby="tab-evidence"
+                >
+                    <div class="intro">
+                        <h2>Recorded evidence</h2>
+                        <p>
+                            Historical responses are fixtures. Only an explicit
+                            execution tests current application code.
+                        </p>
+                    </div>
+                    <div id="evidence-summary" class="cards"></div>
+                    <details open>
+                        <summary>Application input</summary>
+                        <pre id="input"></pre>
+                    </details>
+                    <details>
+                        <summary>Recorded model fixtures</summary>
+                        <pre id="models"></pre>
+                    </details>
+                    <details>
+                        <summary>Recorded tool fixtures</summary>
+                        <pre id="tools"></pre>
+                    </details>
+                    <details>
+                        <summary>Provenance and sanitization report</summary>
+                        <pre id="provenance"></pre>
+                    </details>
+                    <details id="events-section" hidden>
+                        <summary>Original sanitized trace events</summary>
+                        <pre id="events"></pre>
+                    </details>
+                </section>
+                <section
+                    role="tabpanel"
+                    id="panel-review"
+                    aria-labelledby="tab-review"
+                    hidden
+                >
+                    <div class="intro">
+                        <h2>Make intended behavior explicit</h2>
+                        <p>
+                            Inspect sanitization changes and every rule. Saving
+                            edits invalidates review and baseline validation.
+                        </p>
+                    </div>
+                    <div class="toolbar">
+                        <button id="propose">Suggest rules · key-free</button
+                        ><label for="rule-kind">Add a rule</label
+                        ><select id="rule-kind">
+                            <option value="tool_call_count">
+                                Tool call count
+                            </option>
+                            <option value="tool_argument">Tool argument</option>
+                            <option value="forbidden_tool">
+                                Forbidden tool
+                            </option>
+                            <option value="output">Output condition</option>
+                            <option value="max_tool_calls">
+                                Total call budget
+                            </option></select
+                        ><button id="add-rule">Add template</button>
+                    </div>
+                    <p id="draft-state" class="muted">No unsaved changes.</p>
+                    <details id="ai-section">
+                        <summary>Optional AI-assisted suggestions</summary>
+                        <p>
+                            Choose a configured provider. Inspect the exact
+                            sanitized request before sending. Results are
+                            unapproved suggestions; no application code runs.
+                        </p>
+                        <p id="ai-setup" class="muted"></p>
+                        <label for="ai-profile"
+                            >Suggestion provider / model profile</label
+                        >
+                        <select id="ai-profile"></select>
+                        <label for="ai-requirement"
+                            >Intended behavior for AI suggestions</label
+                        >
+                        <textarea
+                            id="ai-requirement"
+                            rows="3"
+                            maxlength="4000"
+                            placeholder="Describe what must hold, even though the recorded application failed."
+                        ></textarea>
+                        <button id="ai-preview">Preview AI request</button>
+                        <div id="ai-preview-content"></div>
+                        <label class="check"
+                            ><input id="ai-consent" type="checkbox" /> I
+                            reviewed this payload and authorize sending it to
+                            the displayed provider.</label
+                        >
+                        <button id="ai-send" class="primary" disabled>
+                            Send previewed AI request
+                        </button>
+                        <p id="ai-status" role="status" aria-live="polite"></p>
+                        <div id="ai-result"></div>
+                    </details>
+                    <div id="rule-editors"></div>
+                    <details>
+                        <summary>Edit complete case JSON (advanced)</summary>
+                        <p>
+                            Use this for inputs, fixtures or provenance.
+                            Supported schema validation applies on save.
+                        </p>
+                        <label for="case-json">Case JSON</label
+                        ><textarea
+                            id="case-json"
+                            rows="18"
+                            spellcheck="false"
+                        ></textarea
+                        ><button id="apply-json">Apply JSON to draft</button>
+                    </details>
+                    <button id="save" class="primary">Save case edits</button>
+                    <div class="review-box">
+                        <h3>Approve the saved case</h3>
+                        <label for="reviewer">Reviewer label</label
+                        ><input
+                            id="reviewer"
+                            maxlength="128"
+                            placeholder="Your name or handle"
+                        /><label for="selected-rule">Failure to reproduce</label
+                        ><select id="selected-rule"></select
+                        ><label class="check"
+                            ><input id="acknowledge" type="checkbox" /> I
+                            reviewed the recorded evidence, sanitization changes
+                            and assertions.</label
+                        ><button id="review" class="primary">
+                            Approve exact case
+                        </button>
+                    </div>
+                </section>
+                <section
+                    role="tabpanel"
+                    id="panel-execution"
+                    aria-labelledby="tab-execution"
+                    hidden
+                >
+                    <div class="intro">
+                        <h2>Run current application code</h2>
+                        <p>
+                            Choose a runner from your trusted local
+                            configuration. Model and tool responses use
+                            fixtures; no live fallback.
+                        </p>
+                    </div>
+                    <label for="runner">Configured runner</label
+                    ><select id="runner"></select>
+                    <p id="config-name" class="muted"></p>
+                    <div class="cards">
+                        <article>
+                            <h3>Reproduce the baseline</h3>
+                            <p>
+                                The selected assertion must fail on a complete
+                                run. This unlocks reduction and export.
+                            </p>
+                            <button id="validate" class="primary">
+                                Validate failing baseline
+                            </button>
+                        </article>
+                        <article>
+                            <h3>Verify the current behavior</h3>
+                            <p>
+                                After fixing your application, select its runner
+                                and check all reviewed assertions.
+                            </p>
+                            <button id="run">Run regression</button>
+                        </article>
+                    </div>
+                    <div id="job-status" role="status" aria-live="polite"></div>
+                    <div id="run-result"></div>
+                </section>
+                <section
+                    role="tabpanel"
+                    id="panel-reduction"
+                    aria-labelledby="tab-reduction"
+                    hidden
+                >
+                    <div class="intro">
+                        <h2>Keep the smallest useful input</h2>
+                        <p>
+                            Reduction removes input values only when a fresh
+                            complete run retains the selected failure. Select a
+                            runner that still reproduces it in Execute.
+                        </p>
+                    </div>
+                    <label for="reduce-name">New case bundle name</label
+                    ><input id="reduce-name" value="reduced-case" /><label
+                        for="max-runs"
+                        >Maximum attempts (30-second total budget)</label
+                    ><input
+                        id="max-runs"
+                        type="number"
+                        min="1"
+                        max="100"
+                        value="25"
+                    /><button id="reduce" class="primary">
+                        Reduce failing input
+                    </button>
+                    <div id="reduction-result"></div>
+                </section>
+                <section
+                    role="tabpanel"
+                    id="panel-export"
+                    aria-labelledby="tab-export"
+                    hidden
+                >
+                    <div class="intro">
+                        <h2>A regular pytest regression</h2>
+                        <p>
+                            Export requires review and a reproduced baseline.
+                            The generated test calls your current configured
+                            runner and must pass after the fix.
+                        </p>
+                    </div>
+                    <p id="export-runner" class="muted"></p>
+                    <p id="export-help" role="status" aria-live="polite"></p>
+                    <label for="export-name">New directory under exports/</label
+                    ><input id="export-name" value="regression" />
+                    <div class="toolbar">
+                        <button id="preview">Preview files</button
+                        ><button id="export" class="primary" aria-describedby="export-help" disabled>
+                            Save export
+                        </button>
+                    </div>
+                    <div id="export-result"></div>
+                </section>
+            </section>
+            <footer>
+                Fixture mode · Local files · Explicit review before execution
+            </footer>
+        </main>
+        <dialog id="import-dialog" aria-labelledby="import-title">
+            <form id="import-form">
+                <div class="dialog-title">
+                    <h2 id="import-title">Import evidence</h2>
+                    <button
+                        type="button"
+                        id="import-close"
+                        aria-label="Close import dialog"
+                    >
+                        ×
+                    </button>
+                </div>
+                <p>
+                    Upload a <strong>JSON recording of a failed agent run</strong>,
+                    containing the original input and recorded model/tool requests
+                    and responses. Fail2Test uses these responses as fixtures while
+                    running your current application code.
+                </p>
+                <button id="import-sample" type="button" hidden>
+                    Try included example instead (no upload)
+                </button>
+                <details>
+                    <summary>What file should I upload?</summary>
+                    <ul>
+                        <li><strong>Fail2Test case v0.1:</strong> a case JSON with
+                            input, model/tool fixtures and behavioral rules. An
+                            initialized demo includes <code>failure.json</code>;
+                            an exported bundle includes <code>case.json</code>.</li>
+                        <li><strong>Neutral trace v0.1:</strong> a JSON recording
+                            with <code>trace_schema_version</code>,
+                            <code>trace_id</code>, <code>input</code>,
+                            <code>completeness</code> and paired request/result
+                            <code>events</code>. You add and review rules after import.</li>
+                    </ul>
+                    <p>Screenshots, plain error logs, repository ZIPs and arbitrary
+                        provider trace exports are not supported uploads. Convert
+                        your recording into one of these formats first; a stack
+                        trace alone cannot supply the recorded responses.</p>
+                    <p>For your own application, configure a runner that injects
+                        these fixtures into current code. Uploading JSON alone does
+                        not connect Fail2Test to your application. Missing interactions
+                        remain incomplete and cannot prove a fix.</p>
+                </details>
+                <p class="muted">
+                    Remove private data before uploading. Known sensitive values
+                    are sanitized locally before saving; inspect the report after import.
+                </p>
+                <label for="import-name">New case bundle name</label
+                ><input
+                    id="import-name"
+                    required
+                    pattern="[a-z0-9][a-z0-9_-]{0,63}"
+                    value="my-case"
+                />
+                <label for="import-file">JSON file (maximum 10 MiB)</label
+                ><input
+                    id="import-file"
+                    type="file"
+                    accept=".json,application/json"
+                />
+                <label for="import-json">Or paste JSON evidence</label
+                ><textarea
+                    id="import-json"
+                    rows="10"
+                    spellcheck="false"
+                ></textarea>
+                <p id="import-error" role="alert"></p>
+                <button class="primary" type="submit">
+                    Sanitize and import
+                </button>
+            </form>
+        </dialog>
+    </body>
+</html>

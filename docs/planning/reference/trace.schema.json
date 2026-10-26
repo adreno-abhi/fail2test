@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:fail2test:trace-schema:0.1",
+  "title": "Fail2Test proposed neutral source trace",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["trace_schema_version", "trace_id", "input", "completeness", "events"],
+  "properties": {
+    "trace_schema_version": {"const": "0.1"},
+    "trace_id": {"type": "string", "minLength": 1, "maxLength": 128},
+    "input": {"type": "object"},
+    "completeness": {"enum": ["declared_complete", "partial", "unknown"]},
+    "events": {
+      "type": "array", "maxItems": 10000,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["event_id", "sequence", "kind", "operation_id", "payload"],
+        "properties": {
+          "event_id": {"type": "string", "minLength": 1, "maxLength": 128},
+          "sequence": {"type": "integer", "minimum": 0},
+          "kind": {"enum": ["model_request", "model_result", "tool_request", "tool_result", "run_output"]},
+          "operation_id": {"type": "string", "minLength": 1, "maxLength": 128},
+          "parent_event_id": {"type": "string", "minLength": 1, "maxLength": 128},
+          "timestamp": {"type": "string", "format": "date-time"},
+          "payload": {}
+        }
+      }
+    }
+  }
+}

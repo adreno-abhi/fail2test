@@ -1,0 +1,102 @@
+name: CI
+
+on:
+  push:
+    branches: [main, "codex/**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONIOENCODING: utf-8
+  OPENAI_API_KEY: ""
+  OPENROUTER_API_KEY: ""
+  OLLAMA_API_KEY: ""
+
+jobs:
+  tests:
+    name: tests (${{ matrix.os }}, ${{ matrix.python }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-22.04, windows-2022]
+        python: ["3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@18d369b23da25a81e9458561248e1aafff6a70fa # v10.3.1
+        with:
+          version: "0.10.9"
+          enable-cache: false
+      - name: Install locked core, native and development dependencies
+        run: uv sync --locked --all-extras --python "${{ matrix.python }}"
+      - name: Verify selected Python and native imports
+        run: >-
+          uv run --locked --all-extras --python "${{ matrix.python }}" python -c
+          "import sys,langgraph,langchain_core; assert '.'.join(map(str,sys.version_info[:2])) == '${{ matrix.python }}'"
+      - name: Core, native and HTTP tests
+        run: >-
+          uv run --locked --all-extras --python "${{ matrix.python }}"
+          pytest --ignore=tests/test_ui_browser.py -q
+
+  quality:
+    name: quality-browser-package
+    runs-on: windows-2022
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@18d369b23da25a81e9458561248e1aafff6a70fa # v10.3.1
+        with:
+          version: "0.10.9"
+          enable-cache: false
+      - name: Install locked browser and development dependencies
+        run: uv sync --locked --all-extras --group browser --python 3.13
+      - name: Install Chromium
+        run: uv run --locked --all-extras --group browser --python 3.13 playwright install chromium
+      - name: Lint
+        run: uv run --locked --all-extras --group browser --python 3.13 ruff check .
+      - name: Formatting
+        run: uv run --locked --all-extras --group browser --python 3.13 ruff format --check .
+      - name: Types
+        run: uv run --locked --all-extras --group browser --python 3.13 mypy
+      - name: All tests including Chromium
+        run: uv run --locked --all-extras --group browser --python 3.13 pytest --cov=fail2test -q
+      - name: Strict documentation build
+        run: uv run --locked --all-extras --group browser --python 3.13 mkdocs build --strict
+      - name: Community structure
+        run: uv run --locked --all-extras --group browser --python 3.13 python scripts/check_repository.py
+      - name: Dependency inventory consistency
+        run: uv run --locked --all-extras --group browser --python 3.13 python scripts/dependency_inventory.py --check-lock
+      - name: Build wheel and source distribution
+        run: uv build
+      - name: Installed artifact smoke checks
+        run: uv run --locked --all-extras --group browser --python 3.13 python scripts/smoke_package.py
+      - name: Installed CLI, browser and native acceptance
+        run: >-
+          uv run --locked --all-extras --group browser --python 3.13 python scripts/acceptance.py
+          --browser --out local-artifacts/ci/installed-acceptance.json
+
+  complete:
+    name: ci-complete
+    if: ${{ always() }}
+    needs: [tests, quality]
+    runs-on: ubuntu-22.04
+    timeout-minutes: 2
+    env:
+      TESTS_RESULT: ${{ needs.tests.result }}
+      QUALITY_RESULT: ${{ needs.quality.result }}
+    steps:
+      - name: Require every matrix and quality job to succeed
+        shell: bash
+        run: test "$TESTS_RESULT" = success && test "$QUALITY_RESULT" = success

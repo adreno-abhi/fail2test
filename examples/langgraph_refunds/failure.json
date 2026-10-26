@@ -1,0 +1,113 @@
+{
+  "schema_version": "0.1",
+  "case_id": "native-langgraph-duplicate-refund",
+  "title": "Native LangGraph tools must not dispatch the same order refund twice",
+  "mode": "fixture",
+  "input": {
+    "messages": [
+      {
+        "role": "user",
+        "content": "Refund order ord-demo-001 for 500 cents."
+      }
+    ]
+  },
+  "model_fixtures": [
+    {
+      "id": "chat-plan-0",
+      "slot": "refund-chat",
+      "ordinal": 0,
+      "request": {
+        "format": "langchain-chat.v1",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Refund order ord-demo-001 for 500 cents."
+          }
+        ],
+        "tools": [
+          {
+            "type": "function",
+            "function": {
+              "name": "refund",
+              "description": "Refund an order once for the approved amount in minor currency units.",
+              "parameters": {
+                "properties": {
+                  "order_id": {
+                    "type": "string"
+                  },
+                  "amount_cents": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "order_id",
+                  "amount_cents"
+                ],
+                "type": "object"
+              }
+            }
+          }
+        ],
+        "stop": null,
+        "tool_choice": null,
+        "options": {}
+      },
+      "response": {
+        "content": "",
+        "tool_calls": [
+          {
+            "name": "refund",
+            "args": {
+              "order_id": "ord-demo-001",
+              "amount_cents": 500
+            },
+            "id": "call-refund-1"
+          },
+          {
+            "name": "refund",
+            "args": {
+              "order_id": "ord-demo-001",
+              "amount_cents": 500
+            },
+            "id": "call-refund-2"
+          }
+        ]
+      }
+    }
+  ],
+  "tool_fixtures": [
+    {
+      "id": "refund-response",
+      "tool": "refund",
+      "arguments": {
+        "order_id": "ord-demo-001",
+        "amount_cents": 500
+      },
+      "response": {
+        "status": "ok",
+        "refund_id": "refund-demo-001"
+      },
+      "repeatable": true
+    }
+  ],
+  "rules": [
+    {
+      "id": "one-refund-per-order",
+      "kind": "tool_call_count",
+      "tool": "refund",
+      "group_by": [
+        "/order_id"
+      ],
+      "min_calls": 1,
+      "max_calls": 1,
+      "require_any": true,
+      "requirement": "In this synthetic scenario refund exactly once for the supplied order; deduplicate repeated model actions before tool dispatch."
+    }
+  ],
+  "provenance": {
+    "source_kind": "synthetic",
+    "source_reference": "Fail2Test native LangGraph refund example; synthetic data only",
+    "requirement": "One refund transport invocation per order in this scenario; not a claim about real payment-system idempotency.",
+    "sanitization": "synthetic"
+  }
+}

@@ -96,6 +96,7 @@ The exact initial package version will reflect supported compatibility, rather t
 - [x] Sanitization, error output, untrusted-input handling, reduction limits and generated-test safety are locally checked; see `docs/development/release-audit.md` for scope and limitations.
 - [x] README, tutorial, CLI/config/schema references, architecture and troubleshooting match implemented behavior; host-only references remain explicitly pending.
 - [x] Apache-2.0 license, separately licensed document notices and locked dependency inventory are included.
+- [x] Initial provenance is reviewed with owner confirmation of publication permission and no unlisted/private additions; see `docs/development/source-provenance.md`.
 - [x] Root contributor/security/support/governance policies, issue/PR forms and roadmap are prepared and locally checked.
 - [ ] Actual public maintainer identities, working private contacts and host-specific community/reporting features are verified.
 - [ ] Package metadata, clean wheel/sdist installation, version/upgrade policy and release/rollback procedure are verified.

@@ -28,7 +28,8 @@ private Git bundle preserves all 18 development commits and both original branch
 This checkout starts with a fresh `main` root commit using the ID-based GitHub form
 `16892619+adreno-abhi@users.noreply.github.com`. Global Git settings were not changed.
 Verify the exact address against GitHub email settings before publication; it is attribution,
-not a monitored mailbox. Source-rights/provenance review is still required. Earlier development
+not a monitored mailbox. The [provenance review](../../development/source-provenance.md)
+records the owner's permission/no-private-material confirmation. Earlier development
 commit IDs in verification documents refer to the retained private history, not public commits.
 See the [publication-history record](../../development/publication-history.md).
 
@@ -104,7 +105,7 @@ Upstream pins and inputs were read from the official repositories. actionlint **
 was downloaded into ignored local tooling and its Windows archive SHA-256 checked against
 the release digest before use. Workflow syntax/expression validation passed (optional
 shellcheck/pyflakes executables were not installed). Local publication checks intentionally
-continue to fail for pending host/contact verification, history privacy, provenance and final
+continue to fail for pending host/contact verification and final
 owner acceptance. No private test report or personal address is embedded in these files.
 
 Local Windows/Python 3.13.5 verification for this preparation: **192 tests passed**, zero

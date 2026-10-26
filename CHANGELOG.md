@@ -2,6 +2,8 @@
 
 ## Unreleased — local development
 
+- Record initial source provenance review and owner confirmation; prepare the exact private GitHub first-push plan without executing it.
+
 - Prepare a separate publication repository with a clean noreply root commit, preserving original development history privately.
 
 - Prepare pinned GitHub CI, dependency-update configuration and a solo-maintainer host setup runbook.

@@ -14,14 +14,17 @@ verified, preserving its branch refs and reachable history. Recovery files stay 
 this publication repository and are not included in its archives.
 
 Application source, tests, examples, schemas, dependency locks, license texts and existing
-attributions are byte-identical to the source snapshot. The only publication-preparation
-changes are this record, the release-facts file, the GitHub runbook, the plan checklist and
-the changelog. A private per-file hash comparison records that exact delta.
+attributions are byte-identical to the source snapshot. At the initial root commit, the only
+preparation changes were this record, release facts, the GitHub runbook, plan checklist and
+changelog. A private per-file hash comparison records that exact delta. Later provenance
+review and first-push planning add documents/policy status updates as ordinary new commits;
+they do not import the old history or change application code.
 
 Earlier commit IDs in development verification records refer to retained private history.
 They are dated engineering evidence, not links to commits in the new public Git graph.
 This new initial snapshot does not claim new authorship or fabricate historical DCO sign-offs.
-Owner source-rights/provenance review remains pending in the publication gate.
+The subsequent [source review](source-provenance.md) records the owner's confirmation;
+host checks and final publication acceptance remain pending.
 
 ## Technical privacy checks
 

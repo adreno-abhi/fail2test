@@ -6,8 +6,11 @@ No public release, registry identity or remote is configured yet.
 
 The owner confirmed `adreno-abhi/fail2test` and `@adreno-abhi` and chose not to publish
 personal email. See the concrete [GitHub setup preparation](docs/release/github/SETUP.md),
-including reporting routes, CI, solo-maintainer settings and the unresolved history-email
-privacy check. Preparation is not permission to create, push or change visibility.
+including reporting routes, CI and solo-maintainer settings. This standalone publication
+checkout has a checked clean history; the private development history must stay local.
+The [source provenance review](docs/development/source-provenance.md) records the owner's
+confirmation. The [exact private first-push plan](docs/release/github/FIRST_PUSH.md) still
+requires separate approval. Preparation is not permission to create, push or change visibility.
 
 The [local audit record](docs/development/release-audit.md) documents the engineering checks
 already completed and their limits. Rebuild, rescan and approve the final publication
@@ -31,7 +34,8 @@ to get a green check. Missing facts and false/non-boolean values fail the gate.
       does not enable it. If host setup needs an earlier private repo, obtain owner approval.
 - [x] State how conflicts involving the sole maintainer are handled; do not claim an
       independent panel or recovery maintainer that does not exist.
-- [ ] Confirm contribution/DCO policy, initial source provenance and third-party attribution.
+- [x] Review contribution/DCO policy, initial source provenance and third-party attribution;
+      owner confirms publication permission and no unlisted/private material. No sign-off is fabricated.
 - [ ] Validate GitHub's rendered issue forms, PR template and community profile after setup.
 - [ ] Add CODEOWNERS only for verified, consenting handles with the appropriate repository access.
 

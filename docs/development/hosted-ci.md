@@ -55,11 +55,24 @@ origin assertion failure locally. Resolving both sides preserves the outside-che
 guard while recognizing two spellings of the same virtual environment. This correction
 does not permit an unrelated source checkout to pass the origin check.
 
-This repair is on `codex/ci-cold-cache` for review; `main` is unchanged. Its hosted check
-result belongs to that branch's exact commit and must not be described as a successful
-rerun of unchanged `main`. The pull request checks provide the final branch-run evidence.
-Initial host/publication gates stay pending until the reviewed repair is accepted and
-relevant controls are actually verified. Dependabot PRs are not automatically merged.
+## Repair acceptance and merged-main verification
+
+[PR #3](https://github.com/adreno-abhi/fail2test/pull/3) passed all 16 push/PR checks at
+`1aa95f0ce44586ec0344585b9df6dbc6f6df9c27`, then the owner approved its merge.
+The merge used the configured ID-based GitHub noreply identity, preserving the reviewed
+source tree exactly. The browser merge form was cancelled because it proposed personal-email
+attribution; no personal address was included in the merge commit or this record.
+
+Merged `main` revision `345eced5b4a1343998adde6b17f8c090ff960d74` passed
+[CI run 40476938192](https://github.com/adreno-abhi/fail2test/actions/runs/40476938192)
+in 3m35s. All six test-matrix jobs, the quality/browser/package job and `ci-complete`
+succeeded. Quality included installed-artifact smoke and the installed CLI/browser/native
+acceptance workflow. These are results for the merged source, not a rerun of unchanged
+initial `main`. No provider calls, releases or paid services were added.
+
+Public/contact/security-feature checks and final publication approval remain pending.
+Dependabot PRs are not automatically merged. Hosted CI success does not itself establish
+branch enforcement, vulnerability reporting, independent usability or production safety.
 
 ## Primary references
 

@@ -6,7 +6,7 @@ It needs no Node.js, account, database or model key.
 ## Start with the example
 
 ```text
-uv sync --locked --all-extras
+uv sync --locked
 uv run fail2test init local-artifacts/ui-demo
 uv run fail2test ui --workspace local-artifacts/ui-demo
 ```
@@ -49,6 +49,10 @@ neutral trace schema is `docs/planning/reference/trace.schema.json`.
 The UI accepts the same formats as CLI `import`. Ordinary log text, screenshots, ZIPs
 and arbitrary vendor exports need conversion first; there is no automatic trace collector.
 Review/remove private data before importing.
+
+See [prepare your own evidence](evidence.md) for a complete neutral JSON example and
+how its events map to fixtures. Check [application fit](adoption.md) before converting
+a large incident trace.
 
 The recording supplies dependency responses; your configured application-owned runner
 executes current code against them. Importing a file alone does not integrate an application;

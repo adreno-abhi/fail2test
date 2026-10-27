@@ -2,15 +2,24 @@
 
 This is a local checklist, not permission to create a repository, push, upload a package or
 configure an account. The owner reviews one agreed step at a time through publication.
-No public release, registry identity or remote is configured yet.
+The repository and remote are configured privately; merged `main` has passed hosted CI.
+No public release or package-registry publication has occurred.
+
+**Open release blocker:** the [developer adoption review](docs/development/developer-adoption-review.md#packaging-blocker-reproducible-finding-and-proposed-correction)
+found that source-build selection can include ignored local artifacts. Review builds were
+quarantined locally. Packaging configuration and negative archive checks must be fixed and
+new artifacts verified before any package release. A clean Git status or prior CI pass does
+not satisfy this boundary.
 
 The owner confirmed `adreno-abhi/fail2test` and `@adreno-abhi` and chose not to publish
 personal email. See the concrete [GitHub setup preparation](docs/release/github/SETUP.md),
 including reporting routes, CI and solo-maintainer settings. This standalone publication
 checkout has a checked clean history; the private development history must stay local.
 The [source provenance review](docs/development/source-provenance.md) records the owner's
-confirmation. The [exact private first-push plan](docs/release/github/FIRST_PUSH.md) still
-requires separate approval. Preparation is not permission to create, push or change visibility.
+confirmation. The [private first-push plan](docs/release/github/FIRST_PUSH.md) is retained
+as history; its private creation/push was separately approved and completed. See the
+[hosted CI record](docs/development/hosted-ci.md). Public visibility, tags/releases and
+package publication still require their own explicit owner approval.
 
 The [local audit record](docs/development/release-audit.md) documents the engineering checks
 already completed and their limits. Rebuild, rescan and approve the final publication
@@ -45,10 +54,11 @@ to get a green check. Missing facts and false/non-boolean values fail the gate.
       [walkthrough record](docs/development/owner-walkthrough.md).
 - [ ] Measure independent human onboarding/integration against PLAN.md's timing targets;
       the guided sample confirmation is not such a measurement.
-- [ ] Establish the supported Python/OS/native-dependency matrix with actual results. Package
-      version classifiers and Windows checks alone do not prove all declared combinations.
-- [ ] Review key-free tutorial, native integration, browser workflow, error paths and generated
-      pytest broken/fixed behavior from the built artifacts.
+- [x] Establish the scoped Python/OS/native-dependency matrix with actual local and hosted
+      results; see [compatibility](docs/site/compatibility.md). Additional platforms remain unclaimed.
+- [x] Exercise the key-free tutorial, native integration, browser workflow, error paths and
+      generated pytest broken/fixed behavior from built artifacts. Independent human integration
+      remains unmeasured; see the [developer review](docs/development/developer-adoption-review.md).
 - [ ] Review untrusted input, privacy, provider consent, session/path controls and dependency risk.
 - [ ] Check documentation/schema/CLI consistency and known limitations. No fabricated badges,
       benchmarks, usage numbers, support SLAs or model-quality guarantees.
@@ -84,9 +94,9 @@ to get a green check. Missing facts and false/non-boolean values fail the gate.
 - Publish the approved tag/release/artifacts, then independently install the public artifact
   and rerun the documented smoke path. Verify links and private report entry points.
 
-The CI workflow and Dependabot configuration are prepared locally. No hosted workflow has
-run or been enabled by a push; no executable release/publishing workflow is supplied.
-Adding a remote or pushing later must remain an explicit owner-approved action.
+The CI workflow and Dependabot configuration are active on the private repository. CI on
+merged `main` revision `345eced` passed. No executable release/publishing workflow is supplied.
+Further pushes, releases or visibility changes remain subject to the agreed owner-approved steps.
 
 ## Recovery and compatibility policy
 

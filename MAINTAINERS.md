@@ -2,8 +2,9 @@
 
 The sole human maintainer and release decision-maker is **Abhijeet
 ([@adreno-abhi](https://github.com/adreno-abhi))**, confirmed by the owner on 26 October 2026.
-The approved repository destination is `adreno-abhi/fail2test`. This checkout is still local;
-the destination has not been created, reserved or pushed by this project preparation step.
+The repository is `adreno-abhi/fail2test` and remains private during launch preparation.
+Private creation, source push and CI have been verified; public visibility remains a separate
+owner decision. See the [host setup record](docs/release/github/SETUP.md).
 
 No personal email address is published as a reporting contact. The owner chose to defer any
 separate project mailbox. Git commit attribution is not a reporting address.

@@ -14,8 +14,17 @@ The declared Python range is **3.12–3.14**. These environments were actually c
 
 Selected suites had zero failures/errors/skips. Browser tests were explicitly excluded from
 non-browser rows. WSL uses Linux Python/POSIX processes, but is not hosted CI or proof of every
-Linux distribution. macOS, ARM, other browsers, Linux browser dependencies and hosted CI remain
+Linux distribution. macOS, ARM, other browsers and Linux browser dependencies remain
 unverified. The verified browser setup is Playwright 1.64.1 with its Chromium 156 build.
+
+## Hosted verification
+
+On 27 October 2026, merged `main` revision `345eced` passed
+[GitHub CI](https://github.com/adreno-abhi/fail2test/actions/runs/40476938192): Ubuntu 22.04
+and Windows Server 2022 on each of Python 3.12, 3.13 and 3.14. The Windows/3.13 quality
+job also passed Chromium tests, wheel/source/native smoke and installed CLI/browser/native
+acceptance. The repository remains private, so this evidence link currently needs access.
+This adds hosted evidence to the dated local matrix; it does not add macOS/ARM or Linux-browser claims.
 
 ## Dependency boundaries
 

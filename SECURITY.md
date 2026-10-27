@@ -14,9 +14,9 @@ For the published GitHub repository, use **Security → Report a vulnerability**
 The publication owner must enable and verify that route before launch. A `SECURITY.md` file
 alone does not enable private reporting.
 
-**Current local status:** `adreno-abhi/fail2test` is the approved destination, but no remote
-repository or live reporting route has been configured by this preparation step. GitHub
-private vulnerability reporting must be enabled and verified at publication. No personal
+**Current pre-release status:** `adreno-abhi/fail2test` exists privately, with hosted CI
+verified. A live private vulnerability reporting route is not enabled; GitHub private
+reporting must be enabled and verified at public launch. No personal
 email or fallback project mailbox is published. If the reporting control is unavailable,
 request that it be enabled without including vulnerability details. During local collaboration,
 use the existing private owner channel. [MAINTAINERS.md](MAINTAINERS.md) and

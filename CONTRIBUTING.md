@@ -4,10 +4,10 @@ Contributions can improve code, documentation, synthetic examples, supported int
 accessibility and bug reports. Start with the [README](README.md), [roadmap](ROADMAP.md),
 [code of conduct](CODE_OF_CONDUCT.md) and [safety contract](docs/site/contracts.md).
 
-The project is still local and has no public release. GitHub issues, pull requests and private
-reporting become available only after repository setup. Until then, work through the project
-owner's existing private collaboration channel. [Publication requirements](PUBLISHING.md)
-record the contact and host checks that must be completed before public launch.
+The repository exists privately at `adreno-abhi/fail2test`; no public release has shipped.
+Collaborators with access can use its issues and pull requests. Public contributions begin
+after the owner approves public visibility. Private vulnerability reporting remains pending;
+follow [SECURITY.md](SECURITY.md). [Publication requirements](PUBLISHING.md) track launch checks.
 
 ## Pick a contribution
 
@@ -43,8 +43,9 @@ uv build
 uv run python scripts/smoke_package.py
 ```
 
-The package smoke check uses cached dependencies for its isolated core install and permits
-lock-constrained downloads for the optional framework install. It makes no model-provider
+The package smoke check permits lock-constrained registry downloads for its isolated core,
+source and optional framework installs; it also works with an initially empty cache.
+It makes no model-provider
 or real-payment calls. It requires `uv` on PATH and working temporary directories.
 
 For documentation-only changes, run `uv sync --locked` and `uv run mkdocs build --strict`.

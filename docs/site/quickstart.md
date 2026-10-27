@@ -1,9 +1,12 @@
 # Key-free quickstart
 
-Run from the local Fail2Test checkout. Install [uv](https://docs.astral.sh/uv/) and a supported Python interpreter. This example uses synthetic data and no payment service or model API.
+Run from the Fail2Test checkout. Install [uv](https://docs.astral.sh/uv/) and a supported
+Python interpreter. Clone the repository as shown in its README, then `cd fail2test`.
+This example uses synthetic data and no payment service or model API. The core example
+does not need the optional LangGraph dependencies.
 
 ```text
-uv sync --locked --all-extras
+uv sync --locked
 uv run fail2test init local-artifacts/demo
 uv run fail2test import local-artifacts/demo/failure.json --out local-artifacts/demo/case
 uv run fail2test inspect local-artifacts/demo/case --json
@@ -50,3 +53,11 @@ separate preview/consent commands. See [compatibility and acceptance](compatibil
 verified environments and the distinction between automated timings and human first-use effort.
 
 All output directories must be new. Original inputs are not overwritten. The reviewer label is a local acknowledgement, not a verified identity or signature.
+
+## Move from the demo to your application
+
+First check [whether your application fits](adoption.md), then prepare
+[supported evidence](evidence.md) and [register a runner](integration.md). The names
+`broken` and `fixed` belong to the demo. In your application, use one runner name,
+validate the failure, make the fix in your editor and rerun that same runner/test.
+The model/tool responses remain recorded fixtures throughout.

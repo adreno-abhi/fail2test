@@ -1,8 +1,13 @@
 # Fail2Test roadmap
 
-**Status:** active local development; a working fixture workflow is implemented. No public release has shipped. The first public release will be published only after the complete agreed workflow and repository checks pass.
+**Status:** private pre-release preparation; the fixture workflow and hosted CI pass.
+No public release has shipped. Public launch follows the agreed acceptance checks and
+explicit owner approval. See the [developer adoption review](docs/development/developer-adoption-review.md).
 
 ## Initial public release
+
+- [ ] Fix ignored-local-file source archive inclusion and verify negative archive checks;
+  see the [confirmed finding](docs/development/developer-adoption-review.md#packaging-blocker-reproducible-finding-and-proposed-correction).
 
 - [x] Python package, CLI and runner contract.
 - [x] Neutral serial JSON import, sanitization and completeness reporting.
@@ -20,7 +25,8 @@
 - [x] Complete clean-install tutorial and automated broken/fixed/export acceptance.
 - [x] Verify Windows/Ubuntu WSL Python 3.12–3.14 and correct tested dependency lower bounds.
 - [ ] Human first-use trial or owner acceptance of the remaining usability uncertainty.
-- [ ] Host CI and additional platforms/browser environments before claiming broader support.
+- [x] Hosted Ubuntu 22.04 / Windows Server 2022 CI on Python 3.12–3.14; Windows browser/package acceptance.
+- [ ] Additional platforms/browser environments before claiming broader support.
 - [x] Local contribution/security/support/governance policies, issue/PR forms and license inventory.
 - [ ] Verify public maintainer/contact details, private reporting and GitHub-rendered community files.
 - [ ] Publishing/release checks and final owner review.
@@ -28,6 +34,11 @@
 These are work items for one complete initial release, not a public alpha/beta sequence. Internal implementation order is in [PLAN.md](PLAN.md).
 
 ## After publication
+
+The [developer adoption review](docs/development/developer-adoption-review.md) identifies
+pre-launch improvements separately from future features. In particular, safe field-level
+case diagnostics and an independent existing-application trial remain priorities. Automatic
+evidence capture, vendor importers and async execution are candidates, not implemented promises.
 
 Welcome contributions through documented issues/PRs. Prioritize compatibility, reproducible bugs and real user needs. Evaluate additional importers/frameworks and execution modes only when there is a maintainer and acceptance evidence. Publish a supported-version and deprecation policy as the project matures.
 

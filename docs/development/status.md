@@ -1,6 +1,22 @@
 # Implementation status
 
-Updated 26 October 2026. This is a local development checkpoint toward one complete public release, not an early public release.
+Updated 27 October 2026. This is private pre-release preparation toward one complete public
+release. The GitHub repository exists privately; no public release or registry upload has shipped.
+
+## Current launch checkpoint
+
+Merged `main` revision `345eced` passed [hosted CI](hosted-ci.md), including all six
+Windows/Ubuntu Python jobs, Chromium, packaging and installed acceptance. Current local
+and historical verification records below remain dated to their own source checkpoints.
+The [developer adoption review](developer-adoption-review.md) records audience fit,
+an additional synthetic application probe, documentation corrections and unresolved friction.
+Private vulnerability reporting/public protections, final source/security/release review,
+owner acceptance and any visibility/release actions remain separate pending checks.
+
+The developer review also found source archives can include ignored local artifacts under
+nested matching directories. Unpublished review builds were quarantined; the packaging
+configuration and negative archive checks need an approved fix. Earlier clean-runner CI
+success remains valid for its scope but does not establish this working-tree exclusion boundary.
 
 ## Implemented
 
@@ -57,13 +73,14 @@ packaging and license-evidence work, six gate tests and the remaining publicatio
   availability limits and the distinction between schema validity and proposal quality. The
   default workflow remains key-free and performs no provider requests.
 - Broaden reduction beyond input deletion only if it preserves clear supported semantics.
-- Verify hosted CI and any additional OS/browser/ARM claims; the documented local matrix is
-  complete, not a promise about every dependency/version combination. Complete the final
-  adversarial/privacy/security review before launch.
+- Hosted CI is verified for the documented Windows/Ubuntu matrix. Additional OS/browser/ARM
+  claims need their own evidence; the matrix is not a promise about every dependency/version
+  combination. Complete final adversarial/privacy/security review before launch.
 - Confirm public maintainer identities and working security/conduct contacts, then verify live
   GitHub private reporting and rendered templates. Local policies deliberately record these gaps.
 - Complete benchmark methodology and final release/security review; refresh the prepared license
   inventory if dependencies change before publication.
 - Configure and verify GitHub/registry identity and host-specific publishing checks only at the authorized publication step.
 
-No GitHub remote, package publication, hosted executor, billing, account management or paid pilot is part of this checkpoint.
+The GitHub remote and private source/CI setup are complete. Package publication, a hosted
+executor, billing, account management and paid pilots remain outside this checkpoint.

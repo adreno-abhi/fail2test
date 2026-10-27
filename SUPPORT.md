@@ -10,7 +10,8 @@ Review diagnostic output before sharing it.
 After GitHub publication, use repository issues for reproducible bugs, focused feature
 proposals and usage questions. Use the matching template and synthetic examples. Discussions
 may be enabled later; there is no existing forum, chat server or commercial support desk.
-While the repository is local, use your existing collaboration channel with the owner.
+While the repository is private, only collaborators with access can use its issue forms;
+otherwise use your existing collaboration channel with the owner.
 
 Include commands, package/commit and dependency versions, OS/Python, selected mode,
 execution status/error code, expected behavior and a minimal reproduction. Provider outages,

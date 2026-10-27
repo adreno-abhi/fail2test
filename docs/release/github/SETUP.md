@@ -1,8 +1,32 @@
-# GitHub setup preparation
+# GitHub setup and verification
 
-Prepared 26 October 2026. **Local files only: no repository created, remote added, push,
-visibility change, account setting change or package publication.** The project owner's
-approval between steps in [PLAN.md](../../../PLAN.md) still applies.
+Updated 27 October 2026. The owner separately approved private repository creation,
+source push, Actions verification and the merge of CI repair PR #3. The repository is
+**private**, with `main` at `345eced5b4a1343998adde6b17f8c090ff960d74` passing
+[hosted CI](https://github.com/adreno-abhi/fail2test/actions/runs/40476938192).
+No public visibility, tag/release or PyPI publication has been authorized or performed.
+Approval between steps in [PLAN.md](../../../PLAN.md) still applies.
+
+## Verified host state and remaining checks
+
+- Private repository/default `main`, maintainer push/merge access, noreply commit identity,
+  rendered README/community-file navigation and successful Actions execution are observed.
+- Six Ubuntu 22.04 / Windows Server 2022 jobs cover Python 3.12–3.14. The Windows quality
+  job passes Chromium tests, docs/types/lint, build, cold-cache package smoke and installed
+  CLI/browser/native acceptance. `ci-complete` succeeds for the exact merged revision.
+- Included Actions quota and an existing zero-paid-usage stopping budget were verified;
+  no paid plan or budget change was made. Repository action allowlisting, full SHA pinning,
+  read-only tokens and seven-day retention were applied. See [host evidence](../../development/hosted-ci.md).
+- GitHub's UI states that rulesets will not be enforced on this private Free-plan target.
+  No unenforced rule is presented as protection. Apply supported protection at approved
+  public setup; do not buy a plan to make the checklist pass.
+- Private vulnerability reporting, public contributor access, final issue-form rendering,
+  security-feature availability/configuration and final owner acceptance remain open.
+  Account recovery/2FA are owner-held checks, not facts inferred from repository access.
+- Two Dependabot PRs remain unmerged; the passing source candidate does not include them.
+
+The original preparation decisions below remain the setup specification. Statements about
+the initial lookup or source snapshot describe that dated stage, not current absence of a repo.
 
 ## Confirmed decisions
 
@@ -10,7 +34,7 @@ approval between steps in [PLAN.md](../../../PLAN.md) still applies.
 |---|---|
 | Destination | `adreno-abhi/fail2test`, explicitly confirmed by the owner |
 | Maintainer | Abhijeet, `@adreno-abhi`; connected profile ID 16892619 |
-| Repository lookup | Authenticated lookup returned 404; not a reservation or proof against an inaccessible private repository |
+| Initial repository lookup | Returned 404 before private creation; superseded by the verified private repository |
 | Personal email | Do not publish it as a contact; defer a separate project mailbox |
 | Security reporting | GitHub private vulnerability reporting; enable and verify on the actual public repository |
 | Conduct | GitHub platform abuse reporting; no private project mailbox or independent conduct team |
@@ -42,16 +66,16 @@ repeat the check for new commits/refs before pushing. It does not describe the p
 
 ## CI files prepared
 
-[`.github/workflows/ci.yml`](../../../.github/workflows/ci.yml) is a real local workflow,
-but it has never run on GitHub. It is activated only by a later explicitly approved push.
+[`.github/workflows/ci.yml`](../../../.github/workflows/ci.yml) runs on the private repository.
+Its exact merged-source verification is linked above.
 
 - Matrix: Ubuntu 22.04 / Windows Server 2022 hosted runners × Python 3.12, 3.13, 3.14;
   core/native/HTTP suite with browser tests explicitly excluded.
 - Windows/Python 3.13 quality job: full suite including installed Chromium, lint, format,
   mypy, strict docs, community/inventory checks, build, isolated wheel/sdist smoke and
   installed CLI/browser/native acceptance.
-- Stable required-check candidate: **`ci-complete`**. It fails unless the entire test
-  matrix and quality job succeed. Register the actual observed check after its first run.
+- Stable observed check: **`ci-complete`**. It fails unless the entire test matrix and
+  quality job succeed. Requiring it on the branch remains a separate host-protection check.
 - Read-only contents permission; checkout credentials not persisted; dependency caches
   disabled; bounded concurrency and job timeouts. Only `push`, ordinary `pull_request` and
   manual triggers. No privileged PR trigger, self-hosted runner, publishing token or provider key.
@@ -60,7 +84,7 @@ but it has never run on GitHub. It is activated only by a later explicitly appro
 
 Checkout v6.1.0 and setup-uv v10.3.1 are pinned to full upstream tag-resolved commit SHAs.
 The reviewed inputs match their action metadata. uv stays at the locally verified 0.10.9.
-Hosted runner images differ from local Windows 11/Ubuntu WSL2; host results remain pending.
+Hosted runner images differ from local Windows 11/Ubuntu WSL2; both scoped results are recorded.
 No Linux browser support is claimed by this workflow. Local YAML/actionlint checks are not
 evidence that a hosted job passed.
 

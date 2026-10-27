@@ -48,6 +48,13 @@ CI now assigns the smoke step a dedicated fresh cache so this boundary stays exe
 The corrected harness passed the full core/source/native smoke workflow locally with a
 different initially empty cache.
 
+The first repair run then passed package smoke and exposed a second acceptance-harness
+issue: on Windows, the installed module path was resolved but `sys.prefix` was not. A
+temporary directory using an actual 8.3 short-path spelling reproduced the same installed-
+origin assertion failure locally. Resolving both sides preserves the outside-checkout
+guard while recognizing two spellings of the same virtual environment. This correction
+does not permit an unrelated source checkout to pass the origin check.
+
 This repair is on `codex/ci-cold-cache` for review; `main` is unchanged. Its hosted check
 result belongs to that branch's exact commit and must not be described as a successful
 rerun of unchanged `main`. The pull request checks provide the final branch-run evidence.

@@ -174,7 +174,8 @@ def main() -> None:
                     str(python),
                     "-c",
                     "import fail2test,json,sys,importlib.util; from pathlib import Path; "
-                    "assert Path(fail2test.__file__).resolve().is_relative_to(Path(sys.prefix)); "
+                    "assert Path(fail2test.__file__).resolve().is_relative_to("
+                    "Path(sys.prefix).resolve()); "
                     "assert importlib.util.find_spec('langgraph') is None; "
                     "print(json.dumps({'python':sys.version.split()[0],'version':fail2test.__version__}))",
                 ],

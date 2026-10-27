@@ -2,6 +2,8 @@
 
 ## Unreleased — local development
 
+- Restrict source builds to explicit publication paths and reject unexpected/private archive paths before smoke installation; exercise dirty-tree exclusion with real wheel/source builds.
+
 - Make installed-artifact verification work with an empty cache using lock-constrained registry installs; exercise that boundary in CI.
 - Canonicalize both sides of the installed-origin check so Windows short-path environments are recognized without accepting source-checkout imports.
 

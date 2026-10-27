@@ -5,11 +5,12 @@ configure an account. The owner reviews one agreed step at a time through public
 The repository and remote are configured privately; merged `main` has passed hosted CI.
 No public release or package-registry publication has occurred.
 
-**Open release blocker:** the [developer adoption review](docs/development/developer-adoption-review.md#packaging-blocker-reproducible-finding-and-proposed-correction)
-found that source-build selection can include ignored local artifacts. Review builds were
-quarantined locally. Packaging configuration and negative archive checks must be fixed and
-new artifacts verified before any package release. A clean Git status or prior CI pass does
-not satisfy this boundary.
+**Packaging blocker corrected locally:** the [developer adoption review](docs/development/developer-adoption-review.md#packaging-blocker-reproducible-finding-and-proposed-correction)
+found source builds could include ignored local artifacts. Explicit publication paths,
+negative real-build tests and pre-install archive guards now pass; fresh installed artifacts
+also pass. See the [correction record](docs/development/packaging-scope-fix.md). Earlier builds
+remain quarantined. Hosted verification of this change and the other public-launch checks
+are pending; a clean Git status alone is not an artifact-content check.
 
 The owner confirmed `adreno-abhi/fail2test` and `@adreno-abhi` and chose not to publish
 personal email. See the concrete [GitHub setup preparation](docs/release/github/SETUP.md),

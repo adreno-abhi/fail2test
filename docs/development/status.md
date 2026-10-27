@@ -13,10 +13,11 @@ an additional synthetic application probe, documentation corrections and unresol
 Private vulnerability reporting/public protections, final source/security/release review,
 owner acceptance and any visibility/release actions remain separate pending checks.
 
-The developer review also found source archives can include ignored local artifacts under
-nested matching directories. Unpublished review builds were quarantined; the packaging
-configuration and negative archive checks need an approved fix. Earlier clean-runner CI
-success remains valid for its scope but does not establish this working-tree exclusion boundary.
+The developer review found source archives could include ignored local artifacts under
+nested matching directories. The [approved packaging correction](packaging-scope-fix.md)
+uses explicit publication paths and negative archive tests; fresh builds and installed
+acceptance pass locally, with 197 tests passing at 88% runtime coverage. Earlier builds
+remain quarantined. The correction still needs hosted verification after an approved push.
 
 ## Implemented
 

@@ -1,9 +1,13 @@
 # Developer adoption and launch-readiness review
 
 27 October 2026. Reviewed source baseline: merged `main`
-`345eced5b4a1343998adde6b17f8c090ff960d74`. This review branch contains documentation
-changes only. The repository stays private. This is a maintainer/AI-assisted assessment,
+`345eced5b4a1343998adde6b17f8c090ff960d74`. Initial review commit `54d71a0` contained
+documentation changes only. The repository stays private. This is a maintainer/AI-assisted assessment,
 not independent customer research, a penetration test or a prediction of GitHub popularity.
+
+**Subsequent approved correction:** the packaging finding below is fixed and verified
+locally; see [packaging correction](packaging-scope-fix.md). Original findings and probe
+results below describe the reviewed baseline. Hosted checks for the correction remain pending.
 
 ## Recommendation
 
@@ -18,8 +22,9 @@ approach for live prompt/model comparisons, async/streaming agents or unsupporte
 Positioning it as a universal agent failure recorder would overpromise its current usefulness.
 
 Do not switch visibility as part of this review. An archive-inspection check found a
-**release blocker: the current source-build selection can include ignored local files**.
-Fix and verify that packaging boundary first, then finish the high-priority adoption items,
+**release blocker: the reviewed source-build selection could include ignored local files**.
+The subsequent approved correction addresses that boundary locally. Finish hosted verification,
+the high-priority adoption items,
 final source/security/release checks and exact-candidate approval.
 A complete first release can remain narrow; supporting every framework is not a prerequisite.
 

@@ -19,5 +19,5 @@
   "hosted_ci_verified": true,
   "hosted_ci_scope": "Merged main 345eced5b4a1343998adde6b17f8c090ff960d74 passed GitHub Actions run 40476938192 on 27 October 2026: six Ubuntu/Windows Python jobs, Windows Chromium/package/installed acceptance and ci-complete. This does not satisfy pending public reporting/protection/community/security checks.",
   "developer_adoption_review": "docs/development/developer-adoption-review.md",
-  "packaging_review_status": "Blocked: source archive includes ignored local artifacts under matching nested directories. Unpublished review builds quarantined. Proposed explicit root-path selection reproduced green only in isolated probe; tracked configuration unchanged. See developer adoption review."
+  "packaging_review_status": "Corrected and verified locally: explicit source publication paths; real dirty-tree marker regression and contaminated-archive guard cases; rebuilt wheel/source installs and installed CLI/browser/native acceptance pass. 197 tests pass. Correction not pushed or verified on GitHub. Earlier review builds remain quarantined. See docs/development/packaging-scope-fix.md."
 }

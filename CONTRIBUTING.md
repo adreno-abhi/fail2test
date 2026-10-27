@@ -48,6 +48,12 @@ source and optional framework installs; it also works with an initially empty ca
 It makes no model-provider
 or real-payment calls. It requires `uv` on PATH and working temporary directories.
 
+Archive boundaries are checked before smoke installation. The packaging regression also
+builds an isolated source copy containing synthetic ignored local/cache/credential-like files
+and verifies they are absent from wheel and source contents. This requires `uv build` and
+access to the configured build dependency registry or its cache. Keep archive policy checks
+aligned with intentional publication roots; a clean Git status is not an artifact-content check.
+
 For documentation-only changes, run `uv sync --locked` and `uv run mkdocs build --strict`.
 Check relative links in root/community files as well; MkDocs covers `docs/site/` only.
 

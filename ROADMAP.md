@@ -6,8 +6,8 @@ explicit owner approval. See the [developer adoption review](docs/development/de
 
 ## Initial public release
 
-- [ ] Fix ignored-local-file source archive inclusion and verify negative archive checks;
-  see the [confirmed finding](docs/development/developer-adoption-review.md#packaging-blocker-reproducible-finding-and-proposed-correction).
+- [x] Fix ignored-local-file source archive inclusion and verify negative archive checks
+  locally; see the [correction and acceptance record](docs/development/packaging-scope-fix.md).
 
 - [x] Python package, CLI and runner contract.
 - [x] Neutral serial JSON import, sanitization and completeness reporting.

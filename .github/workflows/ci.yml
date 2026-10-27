@@ -81,6 +81,8 @@ jobs:
       - name: Build wheel and source distribution
         run: uv build
       - name: Installed artifact smoke checks
+        env:
+          UV_CACHE_DIR: ${{ runner.temp }}/fail2test-smoke-cold
         run: uv run --locked --all-extras --group browser --python 3.13 python scripts/smoke_package.py
       - name: Installed CLI, browser and native acceptance
         run: >-

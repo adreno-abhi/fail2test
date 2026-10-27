@@ -1,7 +1,7 @@
 """Verify actual wheel/sdist installs outside the checkout.
 
-Core smoke checks use cached dependencies. The optional framework check uses
-lock-constrained versions and permits package downloads when not already cached.
+Dependency installs use the runtime lock constraints and permit registry downloads,
+so a fresh CI cache works. This is an installation check, not an offline-install claim.
 
 Run after `uv build`: `uv run python scripts/smoke_package.py`.
 This does not publish or contact a model provider.
@@ -24,7 +24,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def invoke(args: list[str], cwd: Path, expected: int = 0) -> str:
-    result = subprocess.run(args, cwd=cwd, capture_output=True, text=True, timeout=120)
+    result = subprocess.run(
+        args,
+        cwd=cwd,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        timeout=120,
+    )
     if result.returncode != expected:
         raise RuntimeError(
             f"Unexpected exit {result.returncode} for {args[0:3]}\n"
@@ -76,11 +84,36 @@ def main() -> None:
             assert any(name.endswith("/" + required) for name in names), required
     with tempfile.TemporaryDirectory(prefix="fail2test-wheel-smoke-") as temporary:
         directory = Path(temporary)
+        constraints = directory / "runtime-constraints.txt"
+        constraints.write_text(
+            invoke(
+                [
+                    "uv",
+                    "export",
+                    "--locked",
+                    "--all-extras",
+                    "--no-dev",
+                    "--no-emit-project",
+                    "--no-hashes",
+                ],
+                ROOT,
+            ),
+            encoding="utf-8",
+        )
         environment = directory / "isolated environment"
         invoke(["uv", "venv", "--python", sys.executable, str(environment)], directory)
         python = environment / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
         invoke(
-            ["uv", "pip", "install", "--offline", "--python", str(python), f"{wheel}[pytest]"],
+            [
+                "uv",
+                "pip",
+                "install",
+                "--python",
+                str(python),
+                "--constraint",
+                str(constraints),
+                f"{wheel}[pytest]",
+            ],
             directory,
         )
         command = [str(python), "-m", "fail2test.cli"]
@@ -158,9 +191,10 @@ def main() -> None:
                 "uv",
                 "pip",
                 "install",
-                "--offline",
                 "--python",
                 str(python),
+                "--constraint",
+                str(constraints),
                 "--reinstall-package",
                 "fail2test",
                 str(sdist),
@@ -176,22 +210,6 @@ def main() -> None:
                 str(directory / "source-install-demo"),
             ],
             directory,
-        )
-        constraints = directory / "runtime-constraints.txt"
-        constraints.write_text(
-            invoke(
-                [
-                    "uv",
-                    "export",
-                    "--locked",
-                    "--all-extras",
-                    "--no-dev",
-                    "--no-emit-project",
-                    "--no-hashes",
-                ],
-                ROOT,
-            ),
-            encoding="utf-8",
         )
         invoke(
             [

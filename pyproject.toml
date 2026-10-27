@@ -46,7 +46,7 @@ dev = [
 packages = ["src/fail2test"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src/", "tests/", "scripts/", "examples/", "docs/", ".github/", "README.md", "LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md", "DCO", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "SECURITY.md", "SUPPORT.md", "GOVERNANCE.md", "MAINTAINERS.md", "PUBLISHING.md", "CHANGELOG.md", "pyproject.toml", "uv.lock", "mkdocs.yml", "AGENTS.md", "PLAN.md", "ROADMAP.md"]
+only-include = ["src/", "tests/", "scripts/", "examples/", "docs/", ".github/", "README.md", "LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md", "DCO", "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "SECURITY.md", "SUPPORT.md", "GOVERNANCE.md", "MAINTAINERS.md", "PUBLISHING.md", "CHANGELOG.md", "pyproject.toml", "uv.lock", "mkdocs.yml", "AGENTS.md", "PLAN.md", "ROADMAP.md"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

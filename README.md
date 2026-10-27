@@ -1,18 +1,31 @@
 # Fail2Test
 
-Turn an agent failure into a reviewed, portable regression test that runs against your application.
+Turn a recorded agent failure into a pytest regression that catches the bug in your current code.
 
-**Status:** active local development. The key-free regression workflow is implemented and tested. This is not a published or production-certified release. See [development status](docs/development/status.md) for implemented scope and remaining work.
+**Status:** private pre-release preparation. The core workflow and hosted CI pass; no public
+release or PyPI package has shipped. See [development status](docs/development/status.md).
 
-Python 3.12–3.14 is verified on Windows x64 and Ubuntu WSL2 for the documented test matrix.
+Python 3.12–3.14 is tested on Windows and Ubuntu, including hosted CI.
 See [compatibility and measured acceptance](docs/site/compatibility.md) for exact versions,
 browser coverage, corrected dependency bounds and the limits of automated onboarding timings.
 
 A bundled local browser UI covers evidence, review, execution, reduction and export. It needs no frontend tools or model key; see [the browser walkthrough](docs/site/local-ui.md).
 
-Optional [AI-assisted rule suggestions](docs/site/ai-suggestions.md) support OpenRouter,
-already-running local models and other OpenAI-compatible endpoints. Preview and explicitly
-authorize each request; generated rules remain unapproved. The default workflow stays key-free.
+## Is it useful for your project?
+
+Use Fail2Test when your Python agent repeats a tool action, passes an unsafe argument,
+calls a forbidden tool, exceeds a call budget or returns the wrong structured output,
+and you want a reviewed regression in your existing pytest/CI workflow. The best fit is a
+synchronous application whose model and tools can be replaced in tests, including the
+supported LangGraph adapter.
+
+You supply recorded model/tool requests and responses, the intended behavior, and a small
+runner for your application. Import accepts Fail2Test JSON, not arbitrary logs, screenshots
+or vendor trace exports. There is no automatic recorder. Start with the
+[fit guide](docs/site/adoption.md) and [evidence preparation](docs/site/evidence.md).
+
+Fixture tests check how your code handles recorded responses. Prompt/model quality,
+async/streaming execution and arbitrary checkpoint replay need other testing approaches.
 
 ## What it does today
 
@@ -22,10 +35,14 @@ The fixture engine supports duplicate-call checks, argument predicates, forbidde
 
 ## Try the local workflow
 
-From this checkout, with Python 3.13 and uv:
+With Git, Python 3.13 and [uv](https://docs.astral.sh/uv/getting-started/installation/),
+clone the repository and run the key-free example. Access currently requires permission
+to the private repository; these commands also serve as the future public source-install path.
 
 ```text
-uv sync --locked --all-extras
+git clone https://github.com/adreno-abhi/fail2test.git
+cd fail2test
+uv sync --locked
 uv run fail2test init local-artifacts/demo
 uv run fail2test import local-artifacts/demo/failure.json --out local-artifacts/demo/case
 uv run fail2test review local-artifacts/demo/case --reviewer local-owner
@@ -35,6 +52,12 @@ uv run pytest local-artifacts/demo/tests/test_regression.py -q
 ```
 
 No model account or real payment service is involved. `validate` succeeds when it reproduces the selected failure; the exported pytest test succeeds when corrected application behavior satisfies the reviewed rule. Read the [complete tutorial](docs/site/quickstart.md), including the deliberately failing `run` command.
+
+Expected result: the original runner fails the reviewed one-refund rule; the fixed runner
+passes; pytest reports `1 passed`. The export contains `test_regression.py`, `case.json`,
+`manifest.json` and a README. Keep the runner/configuration in your application repository.
+The generated test uses pytest and the Fail2Test runtime; it is not a standalone test with
+all library dependencies removed. Use a new demo/output directory when repeating the trial.
 
 ## Integrate with your application
 
@@ -55,6 +78,11 @@ Register `my_app.testing:run` in trusted local `fail2test.toml`. Generated tests
 
 For a native `MessagesState`/`ToolNode` application, see the [LangGraph example](examples/langgraph_refunds/README.md). Only its test runner knows about Fail2Test; graph construction stays independent.
 
+Optional [AI-assisted rule suggestions](docs/site/ai-suggestions.md) support OpenRouter,
+already-running local models and other OpenAI-compatible endpoints. Preview and explicitly
+authorize each request; generated rules remain unapproved. These providers suggest rules;
+they do not change the recorded model used by a fixture regression.
+
 This implementation requires synchronous, serialized execution and explicit dependency injection. Native chat adaptation supports text messages and ordinary schema-backed tools; it does not construct provider clients, restore arbitrary checkpoints or evaluate live models. Recorded responses test code handling of those responses; they do not prove that a changed prompt improves model output. Sanitization is best effort, and the execution subprocess is not a hostile-code sandbox. Read [contracts and safety](docs/site/contracts.md).
 
 ## Development approach
@@ -63,8 +91,9 @@ Contributions: [guide](CONTRIBUTING.md), [code of conduct](CODE_OF_CONDUCT.md),
 [support](SUPPORT.md), [security](SECURITY.md), [governance](GOVERNANCE.md) and
 [maintainer/contact status](MAINTAINERS.md). Release prerequisites are in
 [PUBLISHING.md](PUBLISHING.md). The owner confirmed `adreno-abhi/fail2test` and
-`@adreno-abhi`; [GitHub setup preparation](docs/release/github/SETUP.md) is local and host
-verification remains pending. Reporting uses platform routes without a personal contact email.
+`@adreno-abhi`. The [private GitHub setup record](docs/release/github/SETUP.md) records
+successful hosted CI and the checks still needed for public launch. Reporting uses platform
+routes without a personal contact email; private vulnerability reporting is not yet enabled.
 
 - Work locally in this dedicated Git repository; use small, reviewable local commits.
 - Build and validate the complete agreed first-release scope before pushing to public GitHub.

@@ -1,8 +1,10 @@
-# Proposed private GitHub creation and first push
+# Private GitHub creation and first-push plan (completed)
 
-Prepared 26 October 2026. **Plan only: no repository creation, remote or push performed.**
-Explicit owner approval and [source provenance confirmation](../../development/source-provenance.md)
-are required before execution.
+Prepared 26 October 2026; retained as the historical operation plan. The owner subsequently
+approved it, private creation/push completed, and merged `main` passed hosted CI on
+27 October 2026. See [current host state](SETUP.md) and
+[hosted CI evidence](../../development/hosted-ci.md). The steps below are not a request
+to recreate the existing repository. Public visibility and package publication remain separate.
 
 ## Exact operation
 

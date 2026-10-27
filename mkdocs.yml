@@ -4,7 +4,9 @@ site_dir: site
 theme: readthedocs
 nav:
   - Overview: index.md
+  - Is it a fit?: adoption.md
   - Quickstart: quickstart.md
+  - Prepare evidence: evidence.md
   - Local browser UI: local-ui.md
   - AI suggestions: ai-suggestions.md
   - Integration: integration.md

@@ -1,5 +1,6 @@
 # Integrating your application
 
+Check [application fit](adoption.md) and prepare [supported evidence](evidence.md) first.
 The integration seam is one callable that accepts JSON input and a `RunContext`, injects its model/tool dependencies, and returns JSON output:
 
 ```python
@@ -76,6 +77,15 @@ Keep the exported test, case and manifest together in your application repositor
 python -m pytest tests/fail2test_regressions
 ```
 
-In your CI runner, install your application's locked dependencies including Fail2Test and pytest, then execute that command. No special CI service or model credential is needed for fixture tests. The project will publish host-specific workflow configuration only when GitHub ownership is established.
+In your CI runner, install your application's locked dependencies including Fail2Test and
+pytest, then execute that command. No special CI service or model credential is needed for
+fixture tests. The project's own hosted workflow is in `.github/workflows/ci.yml`; it tests
+Fail2Test itself and is not a required template for your application.
+
+Use one runner name such as `application` for your own regression. Validate its broken
+behavior, make the code fix, then run/export the same runner. The demo's separate `broken`
+and `fixed` names are teaching aids. If you change a prompt or tool schema, strict request
+matching may require deliberate new fixtures and review; a fixture mismatch is not a
+model-quality judgment.
 
 If a fixture is missing, config is invalid, or the application crashes, the test raises an execution error rather than passing or silently skipping. Editing case/rules requires new review; exporting a case also requires a reproduced failing baseline.

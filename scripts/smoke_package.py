@@ -20,6 +20,8 @@ import tempfile
 import zipfile
 from pathlib import Path
 
+from check_package_contents import check_distributions
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -45,6 +47,7 @@ def invoke(args: list[str], cwd: Path, expected: int = 0) -> str:
 def main() -> None:
     wheel = next((ROOT / "dist").glob("fail2test-*.whl"))
     sdist = next((ROOT / "dist").glob("fail2test-*.tar.gz"))
+    contents = check_distributions(wheel, sdist)
     with zipfile.ZipFile(wheel) as archive:
         names = archive.namelist()
         assert "fail2test/py.typed" in names
@@ -75,6 +78,7 @@ def main() -> None:
             "THIRD_PARTY_NOTICES.md",
             "DCO",
             "PUBLISHING.md",
+            "scripts/check_package_contents.py",
             ".github/ISSUE_TEMPLATE/bug.yml",
             ".github/workflows/ci.yml",
             ".github/dependabot.yml",
@@ -253,6 +257,7 @@ def main() -> None:
         "clean_wheel_workflow": "pass",
         "clean_sdist_install": "pass",
         "clean_native_langgraph_workflow": "pass",
+        "archive_content_checks": contents,
         "framework_dependency_required": False,
         "provider_calls": False,
     }

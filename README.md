@@ -2,8 +2,9 @@
 
 Turn a recorded agent failure into a pytest regression that catches the bug in your current code.
 
-**Status:** private pre-release preparation. The core workflow and hosted CI pass; no public
-release or PyPI package has shipped. See [development status](docs/development/status.md).
+**Status:** public open source project, version 0.1.0 available from this repository.
+The complete supported fixture workflow and hosted CI pass. No tagged GitHub release or
+PyPI upload has shipped yet. See [release notes](docs/release/0.1.0.md).
 
 Python 3.12–3.14 is tested on Windows and Ubuntu, including hosted CI.
 See [compatibility and measured acceptance](docs/site/compatibility.md) for exact versions,
@@ -36,8 +37,7 @@ The fixture engine supports duplicate-call checks, argument predicates, forbidde
 ## Try the local workflow
 
 With Git, Python 3.13 and [uv](https://docs.astral.sh/uv/getting-started/installation/),
-clone the repository and run the key-free example. Access currently requires permission
-to the private repository; these commands also serve as the future public source-install path.
+clone the public repository and run the key-free example. No GitHub account or model key is required.
 
 ```text
 git clone https://github.com/adreno-abhi/fail2test.git
@@ -91,14 +91,15 @@ Contributions: [guide](CONTRIBUTING.md), [code of conduct](CODE_OF_CONDUCT.md),
 [support](SUPPORT.md), [security](SECURITY.md), [governance](GOVERNANCE.md) and
 [maintainer/contact status](MAINTAINERS.md). Release prerequisites are in
 [PUBLISHING.md](PUBLISHING.md). The owner confirmed `adreno-abhi/fail2test` and
-`@adreno-abhi`. The [private GitHub setup record](docs/release/github/SETUP.md) records
-successful hosted CI and the checks still needed for public launch. Reporting uses platform
-routes without a personal contact email; private vulnerability reporting is not yet enabled.
+`@adreno-abhi`. The [GitHub setup record](docs/release/github/SETUP.md) records verified
+public setup, CI and branch protections. Use [private vulnerability reporting](https://github.com/adreno-abhi/fail2test/security/advisories/new)
+for security concerns; conduct reporting uses GitHub's platform route. No personal contact
+email is published.
 
 - Work locally in this dedicated Git repository; use small, reviewable local commits.
 - Build and validate the complete agreed first-release scope before pushing to public GitHub.
 - The project owner is the initial human maintainer; AI assistance does not replace release or security accountability.
-- Prepare contributor docs and a public roadmap for launch. External contributions can begin after publication.
+- Contributions are welcome through documented issues and pull requests; see the public roadmap.
 - Keep commercialization as future context; accounts, billing, paid pilots and hosted execution are outside the initial build.
 
 ## Planning

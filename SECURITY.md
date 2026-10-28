@@ -10,18 +10,14 @@ matrix must be confirmed in release notes before claiming a broader maintenance 
 ## Report privately
 
 Do not put exploit details, keys, private evidence or sensitive code in public issues/PRs.
-For the published GitHub repository, use **Security → Report a vulnerability** when enabled.
-The publication owner must enable and verify that route before launch. A `SECURITY.md` file
-alone does not enable private reporting.
+Use [Security → Report a vulnerability](https://github.com/adreno-abhi/fail2test/security/advisories/new).
+Private vulnerability reporting was enabled and its public entry point verified on
+28 October 2026. A GitHub sign-in may be required. This sends a private report to the
+repository maintainers; do not use an ordinary issue for sensitive details.
 
-**Current pre-release status:** `adreno-abhi/fail2test` exists privately, with hosted CI
-verified. A live private vulnerability reporting route is not enabled; GitHub private
-reporting must be enabled and verified at public launch. No personal
-email or fallback project mailbox is published. If the reporting control is unavailable,
-request that it be enabled without including vulnerability details. During local collaboration,
-use the existing private owner channel. [MAINTAINERS.md](MAINTAINERS.md) and
-[PUBLISHING.md](PUBLISHING.md) track verification. Never infer an address from Git history,
-and do not submit security details through the conduct/abuse route.
+No personal email or fallback mailbox is published. If GitHub's reporting control is
+unavailable, request restoration without including vulnerability details. Never infer
+an address from Git history or send security details through the conduct/abuse route.
 
 Include affected commit/version, Python/OS/dependency versions, impact, reproduction steps,
 expected boundary and a minimal synthetic case. State whether application code was trusted,

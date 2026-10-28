@@ -2,8 +2,8 @@
 
 Updated 27 October 2026 to reflect the project owner's direction. This document controls delivery/launch strategy if an older research or draft note differs.
 
-The private GitHub repository now exists and merged `main` passes hosted CI. Public
-visibility, releases and registry publication remain separately approved actions.
+The GitHub repository is public following explicit owner approval on 28 October 2026.
+Merged `main` passes hosted CI. Tags/releases and registry publication remain separately approved actions.
 The current [developer adoption review](docs/development/developer-adoption-review.md)
 records audience fit, tested onboarding, unresolved friction and proposed launch priorities.
 

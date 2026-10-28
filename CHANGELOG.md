@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.1.0 — prepared, not published
+## 0.1.0 — public source; tag pending
 
-The complete initial fixture workflow is prepared as version 0.1.0. No public tag,
+The complete initial fixture workflow is publicly available from source as version 0.1.0. No tag,
 GitHub release or registry upload exists yet. See the
 [candidate release notes](docs/release/0.1.0.md) for scope, compatibility and limitations.
 Package and case-schema versions are separate; this release retains case schema 0.1.

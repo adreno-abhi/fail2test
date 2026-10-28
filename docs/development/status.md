@@ -1,5 +1,15 @@
 # Implementation status
 
+Current public checkpoint — 28 October 2026: the owner authorized public source launch;
+repository visibility, private reporting and administrator-enforced main protection are
+verified. Main version 0.1.0 at `9976745` passed all six matrix jobs, 211 tests, packaging
+and installed acceptance in [run 40655108733](https://github.com/adreno-abhi/fail2test/actions/runs/40655108733).
+Owner scope/usability acceptance and 2FA/recovery confirmation are recorded. The public-launch
+PR reconciles documentation and activates CODEOWNERS without changing runtime behavior.
+No tag, GitHub release or PyPI upload exists. The dated preparation sections below retain
+their historical scope; their earlier pending statements are superseded by this checkpoint.
+
+
 Updated 28 October 2026. This is private pre-release preparation toward one complete public
 release. The GitHub repository exists privately; no public release or registry upload has shipped.
 
@@ -67,7 +77,7 @@ and passing pytest export. It also documents an incorrect extra assertion reject
 ## Remaining before the agreed complete first release
 
 The latest [compatibility/acceptance record](compatibility-acceptance.md) verifies Windows and
-Ubuntu WSL2 on Python 3.12â€“3.14, 188 full Windows/Chromium tests at 88% coverage, 182 selected
+Ubuntu WSL2 on Python 3.12–3.14, 188 full Windows/Chromium tests at 88% coverage, 182 selected
 tests per other matrix row, and 182 corrected lower-bound tests. Installed-wheel CLI/UI/native
 trials reproduce broken/fixed behavior and preserve an unchanged exported test. Automated
 timings are recorded separately from unmeasured human first-use effort.

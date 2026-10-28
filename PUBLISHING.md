@@ -1,106 +1,46 @@
 # Publication and release checklist
 
-This is a local checklist, not permission to create a repository, push, upload a package or
-configure an account. The owner reviews one agreed step at a time through publication.
-The repository and remote are configured privately; merged `main` at `9799430` has passed hosted CI.
-No public release or package-registry publication has occurred.
+Updated 28 October 2026. The owner explicitly authorized public source launch of
+[adreno-abhi/fail2test](https://github.com/adreno-abhi/fail2test), reporting/protection settings,
+CODEOWNERS and the necessary documentation PR/CI/merge. Tags, GitHub releases, PyPI and paid
+or hosted services require separate approval. See the [public launch record](docs/development/public-launch.md).
 
-**Packaging blocker corrected and verified on merged main:** the [developer adoption review](docs/development/developer-adoption-review.md#packaging-blocker-reproducible-finding-and-proposed-correction)
-found source builds could include ignored local artifacts. Explicit publication paths,
-negative real-build tests and pre-install archive guards now pass; fresh installed artifacts
-also pass. See the [correction record](docs/development/packaging-scope-fix.md). Earlier builds
-remain quarantined. Hosted verification of packaging and safe diagnostics passed on `9799430`.
-Remaining public-launch checks are in the [final review](docs/development/final-release-review.md).
-A clean Git status alone is not an artifact-content check.
+## Completed public-source prerequisites
 
-The owner confirmed `adreno-abhi/fail2test` and `@adreno-abhi` and chose not to publish
-personal email. See the concrete [GitHub setup preparation](docs/release/github/SETUP.md),
-including reporting routes, CI and solo-maintainer settings. This standalone publication
-checkout has a checked clean history; the private development history must stay local.
-The [source provenance review](docs/development/source-provenance.md) records the owner's
-confirmation. The [private first-push plan](docs/release/github/FIRST_PUSH.md) is retained
-as history; its private creation/push was separately approved and completed. See the
-[hosted CI record](docs/development/hosted-ci.md). Public visibility, tags/releases and
-package publication still require their own explicit owner approval.
+- [x] Version 0.1.0 package/runtime/lock metadata and release notes; schemas remain 0.1.
+- [x] Main `9976745` passed six Windows/Ubuntu Python jobs, 211 tests including Chromium,
+  archive/package checks and installed acceptance in [run 40655108733](https://github.com/adreno-abhi/fail2test/actions/runs/40655108733).
+- [x] Scoped privacy/history/provenance/license review; owner confirms publication rights.
+  Original development/recovery files stay local; clean history uses the noreply identity.
+- [x] Owner accepts the supported workflow and unmeasured independent onboarding uncertainty.
+- [x] @adreno-abhi identity/admin access verified; owner confirms 2FA and retained recovery.
+- [x] Public visibility and [private vulnerability reporting](https://github.com/adreno-abhi/fail2test/security/advisories/new) verified.
+- [x] Main requires PRs, GitHub Actions ci-complete, up-to-date branches and resolved conversations;
+  settings apply to administrators. Force pushes/deletion and bypass are disallowed. No outside
+  approvals or self CODEOWNER approval is required for the solo maintainer.
+- [x] Dependency graph, vulnerability/malware alerts and security-update PRs enabled.
+- [x] Three contributor forms and actual PR template render; activate verified maintainer CODEOWNERS.
 
-The [local audit record](docs/development/release-audit.md) documents the engineering checks
-already completed and their limits. Rebuild, rescan and approve the final publication
-candidate after host setup; the local audit does not satisfy human or host-only gates.
+The documentation PR must pass required CI before merging. Public source-install checks and
+the final public main SHA are recorded with launch completion. No absent run is inferred as
+a pass. Publication flags in [publication.json](docs/release/publication.json) record scoped
+evidence and owner confirmation, not automatic live-host, legal or security certification.
 
-Run `uv run python scripts/check_repository.py` for local file/link/form checks and
-`uv run python scripts/check_repository.py --publication` for the explicit pending-facts gate
-in [docs/release/publication.json](docs/release/publication.json). Its booleans record human
-verification, not automatic proof of the corresponding fact. Never mark them true merely
-to get a green check. Missing facts and false/non-boolean values fail the gate.
+## Later tag/release or registry publication — separately authorized
 
-## Identity, contacts and community
-
-- [x] Owner confirms GitHub owner/repository and public maintainer identity in MAINTAINERS.md.
-- [x] No personal reporting email; use GitHub private vulnerability reporting for security
-      and GitHub platform reporting for abusive conduct, with project-channel limits explicit.
-- [ ] Verify private security reporting on the actual host; no mailbox is required by policy.
-- [ ] Replace the explicit local contact-status text with verified public instructions in
-      MAINTAINERS.md, SECURITY.md and SUPPORT.md; verify CoC reporting links still work.
-- [ ] Verify private vulnerability reporting on the actual public repository. A file alone
-      does not enable it. If host setup needs an earlier private repo, obtain owner approval.
-- [x] State how conflicts involving the sole maintainer are handled; do not claim an
-      independent panel or recovery maintainer that does not exist.
-- [x] Review contribution/DCO policy, initial source provenance and third-party attribution;
-      owner confirms publication permission and no unlisted/private material. No sign-off is fabricated.
-- [ ] Validate GitHub's rendered issue forms, PR template and community profile after setup.
-- [ ] Add CODEOWNERS only for verified, consenting handles with the appropriate repository access.
-
-## Quality and compatibility
-
-- [x] Owner confirms the guided sample UI flow through saving export; see
-      [walkthrough record](docs/development/owner-walkthrough.md).
-- [ ] Measure independent human onboarding/integration against PLAN.md's timing targets;
-      the guided sample confirmation is not such a measurement.
-- [x] Establish the scoped Python/OS/native-dependency matrix with actual local and hosted
-      results; see [compatibility](docs/site/compatibility.md). Additional platforms remain unclaimed.
-- [x] Exercise the key-free tutorial, native integration, browser workflow, error paths and
-      generated pytest broken/fixed behavior from built artifacts. Independent human integration
-      remains unmeasured; see the [developer review](docs/development/developer-adoption-review.md).
-- [x] Review untrusted input, privacy, provider consent, session/path controls and locked dependency risk
-      for `9799430`; see the final review. Recheck the exact versioned candidate.
-- [x] Check documentation/schema/CLI consistency and known limitations for the reviewed source.
-      No fabricated badges,
-      benchmarks, usage numbers, support SLAs or model-quality guarantees.
-
-## Prepare an immutable candidate
-
-1. Select an appropriate initial release version; update source/package version and changelog
-   together. No public staged alpha/beta rollout is planned. Do not claim a stable 1.0 contract
-   simply because the agreed workflow is complete.
-2. Update and review the locked [dependency inventory](THIRD_PARTY_NOTICES.md), third-party
-   notices and license exceptions. Recheck notices if vendoring/bundling changes.
-3. From a clean checkout run the commands in CONTRIBUTING.md, including browser checks when
-   relevant, strict docs, `python scripts/check_repository.py`, and package smoke tests.
-4. Build wheel/sdist, inspect contents and metadata, scan the candidate/history for unintended
-   secrets or private artifacts, and record their SHA-256 hashes with the acceptance record.
-   Resolve existing personal-email commit metadata before **any** push, including private
-   host validation. Preserve private recovery history; publish only explicitly reviewed refs.
-5. Owner approves the exact candidate and publication destinations. Confirm GitHub and package
-   name availability/rights at that time; the local project name is not a reservation.
-
-## GitHub and registry setup — separately authorized
-
-- Configure the real remote, repository visibility, least-privilege access, recovery and
-  account protection. Enable verified branch protections and CI checks on the actual host.
-- Keep untrusted PR jobs free of provider/publishing credentials; do not use privileged
-  `pull_request_target` execution for contributor code. Pin third-party workflow actions to
-  reviewed commit SHAs when adding executable workflows.
-- A future CI matrix must run only declared/tested environments, install Chromium explicitly
-  for browser jobs, avoid live providers and enforce bounded job/artifact retention.
-- Package publication, if approved, uses a verified PyPI identity and configured trusted
-  publishing/OIDC or another owner-approved method. Verify attestations/provenance on the
-  actual registry; never add a long-lived publishing token to the repository.
-- Publish the approved tag/release/artifacts, then independently install the public artifact
-  and rerun the documented smoke path. Verify links and private report entry points.
-
-The CI workflow and Dependabot configuration are active on the private repository. CI on
-merged `main` revision `9799430` passed. No executable release/publishing workflow is supplied.
-Further pushes, releases or visibility changes remain subject to the agreed owner-approved steps.
+1. Approve the exact final commit/version and destinations. Public source does not reserve a
+   PyPI name or authorize an upload.
+2. Run relevant CONTRIBUTING checks and hosted CI from a clean checkout. Build/inspect/scan
+   exact archives and record SHA-256 hashes. Use clean Git bytes for reproducible source
+   archives; worktree newline conversions can change their hashes. Preserve audit/recovery
+   files outside publication inputs.
+3. Review dependency/license and compatibility changes. Do not substitute an older green
+   revision for a changed candidate or replace a published artifact silently.
+4. If PyPI is approved, verify registry identity and trusted publishing/OIDC without a
+   long-lived repository token. Do not imply registry attestations already exist.
+5. Publish only approved tags/releases/artifacts; verify public installation and the key-free
+   broken/fixed/export path. Contributor CI stays free of provider/publishing credentials,
+   with read-only tokens, pinned actions and no privileged PR execution.
 
 ## Recovery and compatibility policy
 

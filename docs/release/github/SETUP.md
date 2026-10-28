@@ -23,9 +23,11 @@ Approval between steps in [PLAN.md](../../../PLAN.md) still applies.
 - Private vulnerability reporting, public contributor access, final issue-form rendering,
   security-feature availability/configuration and final owner acceptance remain open.
   Account recovery/2FA are owner-held checks, not facts inferred from repository access.
-- Read-only security inspection on 28 October found dependency graph, Dependabot alerts
-  and security updates off. Enable available free controls in an approved host step and
-  verify actual coverage; see the [final review](../../development/final-release-review.md).
+- The subsequent approved 28 October candidate step enabled dependency graph, vulnerability
+  and malware alerts, and security-update PRs. All 82 exact locked third-party pairs appear
+  in the graph for remote main `9799430`; no open vulnerability alerts are reported. No
+  auto-merge, build-time submission workflow or paid upgrade was enabled. See the
+  [candidate record](../../development/release-0.1.0.md).
 - Two Dependabot PRs remain unmerged; the passing source candidate does not include them.
 
 The original preparation decisions below remain the setup specification. Statements about

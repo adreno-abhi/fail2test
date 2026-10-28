@@ -68,6 +68,10 @@ still reports the four expected pending facts; no gate was relaxed to obtain a p
 
 ## Host findings
 
+Subsequent approved step: the [0.1.0 candidate record](release-0.1.0.md) documents enablement
+of the free dependency controls and exact graph coverage. The findings immediately below
+retain the earlier review's observed state; public reporting/protection checks remain open.
+
 Read-only GitHub inspection on 28 October confirmed a recognized security policy, but
 **dependency graph, Dependabot vulnerability alerts and security updates are off**. The two
 existing version-update PRs do not establish vulnerability monitoring and remain unmerged.

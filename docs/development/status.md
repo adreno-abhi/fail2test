@@ -5,6 +5,12 @@ release. The GitHub repository exists privately; no public release or registry u
 
 ## Current launch checkpoint
 
+Local 0.1.0 preparation on 28 October aligns package/runtime/lock versions and release notes;
+see the [candidate record](release-0.1.0.md). Approved free GitHub dependency graph,
+vulnerability/malware alerts and security-update PRs are enabled. All 82 locked third-party
+name/version pairs are visible in the remote graph, and it reports no open vulnerability
+alerts. No push of this local candidate, public transition or release has occurred.
+
 28 October: packaging and safe case diagnostics are merged in `main`
 `97994307fbc19edd2e61fed47f4edaff43046912` and passed
 [CI run 40645352245](https://github.com/adreno-abhi/fail2test/actions/runs/40645352245):
@@ -16,8 +22,8 @@ known vulnerabilities across all 82 locked packages. This is dated engineering e
 not a guarantee of safety or permission to publish.
 
 The final review identifies remaining candidate/version, human usability acceptance and
-host/public reporting/protection checks. Dependency graph and vulnerability alerts are off
-on the inspected private host; available free security controls need approved enablement.
+host/public reporting/protection checks. The dependency controls were off during that
+inspection and have since been enabled in the approved candidate-preparation step above.
 The publication gate remains closed. Older verification records below retain their own
 source/date scope. No public visibility, tag/release or registry upload has occurred.
 

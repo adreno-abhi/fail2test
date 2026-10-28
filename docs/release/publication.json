@@ -21,5 +21,8 @@
   "developer_adoption_review": "docs/development/developer-adoption-review.md",
   "packaging_review_status": "Corrected and verified locally and on merged main 9799430: explicit source publication paths, real dirty-tree exclusion tests, contaminated-archive guards and installed wheel/source/native checks pass. Earlier builds stay quarantined. Rebuild and scan after final version changes; see docs/development/final-release-review.md.",
   "security_review": "docs/development/final-release-review.md",
-  "dependency_audit_scope": "28 October 2026: pip-audit 2.10.1 queried all 82 exact locked packages using the PyPI advisory service; no known vulnerabilities reported. Not a guarantee for dependency ranges, unlocked build tools, browser/OS components or future advisories."
+  "dependency_audit_scope": "28 October 2026: pip-audit 2.10.1 queried all 82 exact locked packages using the PyPI advisory service; no known vulnerabilities reported. Not a guarantee for dependency ranges, unlocked build tools, browser/OS components or future advisories.",
+  "prepared_version": "0.1.0",
+  "candidate_record": "docs/development/release-0.1.0.md",
+  "dependency_host_controls": "28 October 2026: dependency graph, vulnerability alerts, malware alerts and security-update PRs enabled and persisted. All 82 exact locked third-party pairs are visible at remote main 9799430, plus own dev-version entry and two actions; zero open vulnerability alerts. Candidate version remains local. Public reporting/protection and final owner acceptance remain unverified."
 }

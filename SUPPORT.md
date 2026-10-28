@@ -7,11 +7,11 @@ Review diagnostic output before sharing it.
 
 ## Bugs, questions and proposals
 
-After GitHub publication, use repository issues for reproducible bugs, focused feature
+Use [repository issues](https://github.com/adreno-abhi/fail2test/issues) for reproducible bugs, focused feature
 proposals and usage questions. Use the matching template and synthetic examples. Discussions
 may be enabled later; there is no existing forum, chat server or commercial support desk.
-While the repository is private, only collaborators with access can use its issue forms;
-otherwise use your existing collaboration channel with the owner.
+The public issue forms are available to contributors with a GitHub account; reading the
+repository and installing from source do not require one.
 
 Include commands, package/commit and dependency versions, OS/Python, selected mode,
 execution status/error code, expected behavior and a minimal reproduction. Provider outages,

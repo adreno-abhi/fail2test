@@ -1,8 +1,8 @@
 # Fail2Test roadmap
 
-**Status:** private pre-release preparation; the fixture workflow and hosted CI pass.
-No public release has shipped. Public launch follows the agreed acceptance checks and
-explicit owner approval. See the [developer adoption review](docs/development/developer-adoption-review.md).
+**Status:** public source project at version 0.1.0; the fixture workflow and hosted CI pass.
+The owner accepted the supported initial scope and remaining usability uncertainty.
+No tagged release or PyPI package has shipped. See the [developer adoption review](docs/development/developer-adoption-review.md).
 
 ## Initial public release
 
@@ -24,11 +24,11 @@ explicit owner approval. See the [developer adoption review](docs/development/de
 - [x] Measure automated installed CLI/UI/native paths and document integration changes/limits.
 - [x] Complete clean-install tutorial and automated broken/fixed/export acceptance.
 - [x] Verify Windows/Ubuntu WSL Python 3.12–3.14 and correct tested dependency lower bounds.
-- [ ] Human first-use trial or owner acceptance of the remaining usability uncertainty.
+- [x] Owner accepts the documented scope and remaining unmeasured independent usability uncertainty.
 - [x] Hosted Ubuntu 22.04 / Windows Server 2022 CI on Python 3.12–3.14; Windows browser/package acceptance.
 - [ ] Additional platforms/browser environments before claiming broader support.
 - [x] Local contribution/security/support/governance policies, issue/PR forms and license inventory.
-- [ ] Verify public maintainer/contact details, private reporting and GitHub-rendered community files.
+- [x] Verify public maintainer/contact routes, private reporting and rendered contributor forms.
 - [ ] Publishing/release checks and final owner review.
 
 These are work items for one complete initial release, not a public alpha/beta sequence. Internal implementation order is in [PLAN.md](PLAN.md).

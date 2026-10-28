@@ -1,2 +1,2 @@
-# Proposed ownership. Activate as .github/CODEOWNERS only after repository access verification.
+# Active ownership is in .github/CODEOWNERS; this is the retained setup reference.
 * @adreno-abhi

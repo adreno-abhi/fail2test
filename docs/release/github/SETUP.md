@@ -1,5 +1,15 @@
 # GitHub setup and verification
 
+Current public checkpoint — 28 October 2026: the owner authorized public source launch;
+repository visibility, private reporting and administrator-enforced main protection are
+verified. Main version 0.1.0 at `9976745` passed all six matrix jobs, 211 tests, packaging
+and installed acceptance in [run 40655108733](https://github.com/adreno-abhi/fail2test/actions/runs/40655108733).
+Owner scope/usability acceptance and 2FA/recovery confirmation are recorded. The public-launch
+PR reconciles documentation and activates CODEOWNERS without changing runtime behavior.
+No tag, GitHub release or PyPI upload exists. The dated preparation sections below retain
+their historical scope; their earlier pending statements are superseded by this checkpoint.
+
+
 Updated 28 October 2026. The owner separately approved private repository creation,
 source push, Actions verification and merges of PRs #3, #4 and #5. The repository is
 **private**, with `main` at `97994307fbc19edd2e61fed47f4edaff43046912` passing

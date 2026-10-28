@@ -1,8 +1,8 @@
 {
   "inventory_version": 1,
-  "review_date": "2026-10-26",
+  "review_date": "2026-10-28",
   "environment": "Windows, Python 3.13.5, all extras/groups",
-  "lock_sha256": "cf05071273a3c9cab23f4e470fa1ac7877d32ba36ded6c9ec5220b31f63a61d3",
+  "lock_sha256": "2b25938922f41616ea381c8e34677a7b648fce823a4599567c9f1951d28cc292",
   "scope": "All locked third-party Python packages; no legal clearance or vulnerability scan",
   "packages": [
     {

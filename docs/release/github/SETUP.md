@@ -1,9 +1,9 @@
 # GitHub setup and verification
 
-Updated 27 October 2026. The owner separately approved private repository creation,
-source push, Actions verification and the merge of CI repair PR #3. The repository is
-**private**, with `main` at `345eced5b4a1343998adde6b17f8c090ff960d74` passing
-[hosted CI](https://github.com/adreno-abhi/fail2test/actions/runs/40476938192).
+Updated 28 October 2026. The owner separately approved private repository creation,
+source push, Actions verification and merges of PRs #3, #4 and #5. The repository is
+**private**, with `main` at `97994307fbc19edd2e61fed47f4edaff43046912` passing
+[hosted CI](https://github.com/adreno-abhi/fail2test/actions/runs/40645352245).
 No public visibility, tag/release or PyPI publication has been authorized or performed.
 Approval between steps in [PLAN.md](../../../PLAN.md) still applies.
 
@@ -23,6 +23,11 @@ Approval between steps in [PLAN.md](../../../PLAN.md) still applies.
 - Private vulnerability reporting, public contributor access, final issue-form rendering,
   security-feature availability/configuration and final owner acceptance remain open.
   Account recovery/2FA are owner-held checks, not facts inferred from repository access.
+- The subsequent approved 28 October candidate step enabled dependency graph, vulnerability
+  and malware alerts, and security-update PRs. All 82 exact locked third-party pairs appear
+  in the graph for remote main `9799430`; no open vulnerability alerts are reported. No
+  auto-merge, build-time submission workflow or paid upgrade was enabled. See the
+  [candidate record](../../development/release-0.1.0.md).
 - Two Dependabot PRs remain unmerged; the passing source candidate does not include them.
 
 The original preparation decisions below remain the setup specification. Statements about

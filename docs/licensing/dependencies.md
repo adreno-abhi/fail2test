@@ -1,6 +1,6 @@
 # Locked dependency licenses
 
-Generated from `uv.lock` and distribution metadata on 2026-10-26.
+Generated from `uv.lock` and distribution metadata on 2026-10-28.
 See [scope and exceptions](../../THIRD_PARTY_NOTICES.md). Empty groups mean transitive;
 the lockfile graph determines which extras/platforms actually install a package.
 

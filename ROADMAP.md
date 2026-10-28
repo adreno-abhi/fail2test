@@ -7,7 +7,7 @@ explicit owner approval. See the [developer adoption review](docs/development/de
 ## Initial public release
 
 - [x] Fix ignored-local-file source archive inclusion and verify negative archive checks
-  locally; see the [correction and acceptance record](docs/development/packaging-scope-fix.md).
+  locally and on merged main; see the [correction and acceptance record](docs/development/packaging-scope-fix.md).
 
 - [x] Python package, CLI and runner contract.
 - [x] Neutral serial JSON import, sanitization and completeness reporting.
@@ -37,9 +37,10 @@ These are work items for one complete initial release, not a public alpha/beta s
 
 The [developer adoption review](docs/development/developer-adoption-review.md) identifies
 pre-launch improvements separately from future features. In particular, safe field-level
-case diagnostics are now implemented and tested locally; see the
-[verification record](docs/development/safe-case-diagnostics.md). Hosted verification and
-an independent existing-application trial remain priorities. Automatic
+case diagnostics are implemented and verified on merged main; see the
+[verification record](docs/development/safe-case-diagnostics.md). The
+[final release review](docs/development/final-release-review.md) tracks remaining launch
+checks and the independent existing-application trial or owner acceptance of its uncertainty. Automatic
 evidence capture, vendor importers and async execution are candidates, not implemented promises.
 
 Welcome contributions through documented issues/PRs. Prioritize compatibility, reproducible bugs and real user needs. Evaluate additional importers/frameworks and execution modes only when there is a maintainer and acceptance evidence. Publish a supported-version and deprecation policy as the project matures.

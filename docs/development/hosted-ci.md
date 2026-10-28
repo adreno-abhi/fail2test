@@ -1,5 +1,10 @@
 # Hosted CI and repository controls
 
+Current checkpoint (28 October): merged main `9799430` passed
+[run 40645352245](https://github.com/adreno-abhi/fail2test/actions/runs/40645352245),
+including packaging and safe diagnostics. See the [final review](final-release-review.md).
+The account/control setup and first repair history below retain their 27 October scope.
+
 27 October 2026. The repository remains private at `adreno-abhi/fail2test`. The owner
 approved verifying included Actions quota, running hosted CI and applying available
 repository controls without a paid upgrade or public-visibility change.

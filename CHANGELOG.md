@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased — local development
+## 0.1.0 — prepared, not published
+
+The complete initial fixture workflow is prepared as version 0.1.0. No public tag,
+GitHub release or registry upload exists yet. See the
+[candidate release notes](docs/release/0.1.0.md) for scope, compatibility and limitations.
+Package and case-schema versions are separate; this release retains case schema 0.1.
 
 - Identify invalid case fields with bounded schema-derived locations and fixed explanations; withhold values, unknown dictionary keys and validator text from CLI/browser diagnostics while preserving error codes and rejected-edit state.
 

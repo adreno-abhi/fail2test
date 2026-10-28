@@ -1,5 +1,9 @@
 # Local security and release-readiness audit
 
+Historical checkpoint. The [28 October final review](final-release-review.md) supersedes
+this record for current source, host findings and fresh dependency/privacy checks. The
+results below retain their original revision/date scope.
+
 26 October 2026. Runtime revision `a288252`, following compatibility revision `b5eaca6`.
 This is a local engineering review, not an independent penetration test, legal clearance,
 or publication approval. No provider calls, account changes or AI runtime installation

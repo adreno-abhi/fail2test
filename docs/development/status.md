@@ -1,29 +1,31 @@
 # Implementation status
 
-Updated 27 October 2026. This is private pre-release preparation toward one complete public
+Updated 28 October 2026. This is private pre-release preparation toward one complete public
 release. The GitHub repository exists privately; no public release or registry upload has shipped.
 
 ## Current launch checkpoint
 
-28 October: the packaging correction merged as `53727aa` and passed
-[CI run 40486569110](https://github.com/adreno-abhi/fail2test/actions/runs/40486569110).
-The next approved local step adds [safe case diagnostics](safe-case-diagnostics.md)
-without changing validation/review semantics. Its own hosted verification remains pending.
-The earlier checkpoint descriptions below retain their recorded source scope.
+Local 0.1.0 preparation on 28 October aligns package/runtime/lock versions and release notes;
+see the [candidate record](release-0.1.0.md). Approved free GitHub dependency graph,
+vulnerability/malware alerts and security-update PRs are enabled. All 82 locked third-party
+name/version pairs are visible in the remote graph, and it reports no open vulnerability
+alerts. No push of this local candidate, public transition or release has occurred.
 
-Merged `main` revision `345eced` passed [hosted CI](hosted-ci.md), including all six
-Windows/Ubuntu Python jobs, Chromium, packaging and installed acceptance. Current local
-and historical verification records below remain dated to their own source checkpoints.
-The [developer adoption review](developer-adoption-review.md) records audience fit,
-an additional synthetic application probe, documentation corrections and unresolved friction.
-Private vulnerability reporting/public protections, final source/security/release review,
-owner acceptance and any visibility/release actions remain separate pending checks.
+28 October: packaging and safe case diagnostics are merged in `main`
+`97994307fbc19edd2e61fed47f4edaff43046912` and passed
+[CI run 40645352245](https://github.com/adreno-abhi/fail2test/actions/runs/40645352245):
+all six platform/Python matrix jobs, 211 full-suite tests including Chromium at 89% runtime
+coverage, archive guards, package smoke and installed CLI/browser/native acceptance.
+See [safe diagnostics](safe-case-diagnostics.md) and the
+[final security/release review](final-release-review.md). The fresh advisory query found no
+known vulnerabilities across all 82 locked packages. This is dated engineering evidence,
+not a guarantee of safety or permission to publish.
 
-The developer review found source archives could include ignored local artifacts under
-nested matching directories. The [approved packaging correction](packaging-scope-fix.md)
-uses explicit publication paths and negative archive tests; fresh builds and installed
-acceptance pass locally, with 197 tests passing at 88% runtime coverage. Earlier builds
-remain quarantined. The correction still needs hosted verification after an approved push.
+The final review identifies remaining candidate/version, human usability acceptance and
+host/public reporting/protection checks. The dependency controls were off during that
+inspection and have since been enabled in the approved candidate-preparation step above.
+The publication gate remains closed. Older verification records below retain their own
+source/date scope. No public visibility, tag/release or registry upload has occurred.
 
 ## Implemented
 
@@ -65,7 +67,7 @@ and passing pytest export. It also documents an incorrect extra assertion reject
 ## Remaining before the agreed complete first release
 
 The latest [compatibility/acceptance record](compatibility-acceptance.md) verifies Windows and
-Ubuntu WSL2 on Python 3.12–3.14, 188 full Windows/Chromium tests at 88% coverage, 182 selected
+Ubuntu WSL2 on Python 3.12â€“3.14, 188 full Windows/Chromium tests at 88% coverage, 182 selected
 tests per other matrix row, and 182 corrected lower-bound tests. Installed-wheel CLI/UI/native
 trials reproduce broken/fixed behavior and preserve an unchanged exported test. Automated
 timings are recorded separately from unmeasured human first-use effort.
@@ -82,11 +84,11 @@ packaging and license-evidence work, six gate tests and the remaining publicatio
 - Broaden reduction beyond input deletion only if it preserves clear supported semantics.
 - Hosted CI is verified for the documented Windows/Ubuntu matrix. Additional OS/browser/ARM
   claims need their own evidence; the matrix is not a promise about every dependency/version
-  combination. Complete final adversarial/privacy/security review before launch.
+  combination. The final maintainer security review is complete for the stated revision; recheck the exact release candidate.
 - Confirm public maintainer identities and working security/conduct contacts, then verify live
   GitHub private reporting and rendered templates. Local policies deliberately record these gaps.
-- Complete benchmark methodology and final release/security review; refresh the prepared license
-  inventory if dependencies change before publication.
+- Finish exact-candidate release checks and owner acceptance; refresh the prepared license
+  inventory if dependencies change. Human timing/benchmark claims remain unmeasured.
 - Configure and verify GitHub/registry identity and host-specific publishing checks only at the authorized publication step.
 
 The GitHub remote and private source/CI setup are complete. Package publication, a hosted

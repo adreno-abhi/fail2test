@@ -94,7 +94,8 @@ The exact initial package version will reflect supported compatibility, rather t
 - [x] The local browser UI completes the same reviewed failure-to-test workflow; browser tests verify errors, review invalidation, execution results and export. Bundled assets work without frontend build tools or external assets on the user's machine.
 - [x] The supported injection-friendly sample integrates through a small runner and runs ordinary exported pytest; automated effort and limitations are recorded.
 - [x] Owner confirms the guided sample UI walkthrough through saving an export; see `docs/development/owner-walkthrough.md` for limits.
-- [ ] Real host CI verification and independent human onboarding/integration timing are complete.
+- [x] Real host CI verifies the supported matrix on merged `main` at `9799430`.
+- [ ] Independent human onboarding/integration timing, or explicit owner acceptance of that uncertainty.
 - [x] Exported tests execute current application code, fail on the known broken runner and pass on the corrected runner.
 - [x] Missing/unsupported/incomplete evidence has negative coverage and does not produce a validated green result.
 - [x] Supported rule kinds and LangGraph integration have positive/negative acceptance coverage in the documented local matrix.

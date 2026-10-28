@@ -91,6 +91,11 @@ they do not evaluate changed prompts against live models.
 
 ## Errors and limits
 
+Invalid case edits identify known schema fields, such as `case.rules[0].requirement`,
+with a fixed explanation. Unknown keys, values and validator text are omitted from errors.
+At most five issues are shown; the draft remains editable and the saved case/review/baseline
+are unchanged after rejection. See [evidence diagnostics](evidence.md#troubleshooting-preparation).
+
 Optional provider/model selection lives under **Review → Optional AI-assisted suggestions**.
 See [AI suggestions](ai-suggestions.md) for configuration, payload preview, explicit consent
 and credential handling. The deterministic suggestion button remains key-free.

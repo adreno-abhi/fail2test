@@ -122,6 +122,25 @@ state or wrong requirement; do not invent responses or weaken the rule to export
 | `REVIEW_REQUIRED` | Inspect edits and acknowledge the new exact case before running |
 | Incomplete fixture run | Compare recorded slot/ordinal/request or tool/arguments; inspect the execution error code |
 
-Current validation errors intentionally omit raw values, but `INVALID_CASE` does not yet
-identify the invalid field. Schema comparison is a workaround, not an automatic repair tool.
-Import sanitization is best effort. Review artifacts before sharing; never upload live secrets.
+Case validation errors identify schema-defined fields without printing their values. For
+example, a forbidden-tool rule missing its requirement reports:
+
+```text
+INVALID_CASE: case.rules[0].requirement: Required field is missing. Compare with the case schema using fail2test schema.
+```
+
+`case.rules[0]` means the first rule. Diagnostics show at most five issues and indicate when
+additional errors are omitted. Unknown property names and keys inside arbitrary input,
+request, response or argument data are withheld: the location stops at the nearest known
+schema field. An unknown property in a fixture is reported at that fixture, not by its name.
+Object-wide constraints can report only the enclosing object; consult the schema and
+[contracts](contracts.md) for uniqueness, fixture ordering and rule constraints.
+
+CLI import/load/review, normalized trace-fixture checks, AI preview and browser edits use
+these safe diagnostics, with their existing error codes. Invalid imports create no bundle;
+rejected edits preserve the saved case, review and baseline. Direct `Case.model_validate`
+retains Pydantic's normal exception API, which can contain input data; use the file/import
+workflow for reportable errors rather than sharing raw validator exceptions.
+
+Schema comparison is not an automatic repair tool. Import sanitization is best effort.
+Review artifacts before sharing; never upload live secrets.

@@ -241,7 +241,15 @@ def main() -> None:
         invoke(command + ["review", str(native_case), "--reviewer", "smoke-owner"], directory)
         invoke(
             command
-            + ["validate", str(native_case), "--runner", "broken", "--config", str(native_config)],
+            + [
+                "validate",
+                str(native_case),
+                "--runner",
+                "broken",
+                "--config",
+                str(native_config),
+                "--json",
+            ],
             directory,
         )
         invoke(

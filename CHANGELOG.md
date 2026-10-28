@@ -2,6 +2,8 @@
 
 ## Unreleased — local development
 
+- Identify invalid case fields with bounded schema-derived locations and fixed explanations; withhold values, unknown dictionary keys and validator text from CLI/browser diagnostics while preserving error codes and rejected-edit state.
+
 - Restrict source builds to explicit publication paths and reject unexpected/private archive paths before smoke installation; exercise dirty-tree exclusion with real wheel/source builds.
 
 - Make installed-artifact verification work with an empty cache using lock-constrained registry installs; exercise that boundary in CI.

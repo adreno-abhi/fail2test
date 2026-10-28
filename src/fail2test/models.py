@@ -8,7 +8,7 @@ from typing import Annotated, Any, Literal, Self
 
 from pydantic import BaseModel, ConfigDict, Field, JsonValue, PrivateAttr, model_validator
 
-from fail2test.errors import Fail2TestError, IncompleteExecutionError
+from fail2test.errors import Fail2TestError, IncompleteExecutionError, validation_message
 from fail2test.jsonio import canonical, check_depth, digest, read_json
 
 Identifier = Annotated[str, Field(pattern=r"^[a-zA-Z0-9][a-zA-Z0-9._-]{0,127}$")]
@@ -157,9 +157,7 @@ class Case(StrictModel):
         try:
             case = cls.model_validate(read_json(target))
         except ValidationError as exc:
-            raise Fail2TestError(
-                "INVALID_CASE", "Case does not match the supported schema."
-            ) from exc
+            raise Fail2TestError("INVALID_CASE", validation_message(exc, cls)) from None
         case._path = target.resolve()
         return case
 

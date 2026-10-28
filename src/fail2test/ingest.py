@@ -8,7 +8,7 @@ from typing import Any
 
 from pydantic import ValidationError
 
-from fail2test.errors import Fail2TestError
+from fail2test.errors import Fail2TestError, validation_message
 from fail2test.jsonio import canonical, read_json, write_json
 from fail2test.models import Case
 from fail2test.privacy import sanitize
@@ -29,9 +29,7 @@ def import_data(raw: Any, out: Path, *, rules: list[Any] | None = None) -> Path:
         try:
             data = Case.model_validate(data).model_dump(mode="json")
         except ValidationError as exc:
-            raise Fail2TestError(
-                "INVALID_CASE", "Imported case does not match the supported schema."
-            ) from exc
+            raise Fail2TestError("INVALID_CASE", validation_message(exc, Case)) from None
         complete = True
         notes: list[str] = []
     elif data.get("trace_schema_version") == "0.1":
@@ -232,8 +230,8 @@ def _normalize_trace(trace: dict[str, Any]) -> tuple[dict[str, Any], bool, list[
         )
     except ValidationError as exc:
         raise Fail2TestError(
-            "INVALID_TRACE_PAYLOAD", "Normalized fixtures violate the case contract."
-        ) from exc
+            "INVALID_TRACE_PAYLOAD", "Normalized trace case: " + validation_message(exc, Case)
+        ) from None
     return data, complete, notes
 
 

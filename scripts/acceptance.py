@@ -184,6 +184,30 @@ def main() -> None:
         cli_started = time.perf_counter()
         trial.run("cli_init", command + ["init", "demo"])
         case, config = "demo/case", "demo/fail2test.toml"
+        invalid = json.loads((directory / "demo/failure.json").read_text(encoding="utf-8"))
+        invalid["rules"] = [{"id": "read-only", "kind": "forbidden_tool", "tool": "delete"}]
+        invalid["model_fixtures"][0]["private-customer-name"] = "DO_NOT_ECHO_CUSTOMER_VALUE"
+        (directory / "demo/invalid-case.json").write_text(json.dumps(invalid), encoding="utf-8")
+        diagnostic = json.loads(
+            trial.run(
+                "cli_case_diagnostics",
+                command
+                + [
+                    "run",
+                    "demo/invalid-case.json",
+                    "--runner",
+                    "broken",
+                    "--config",
+                    config,
+                    "--json",
+                ],
+                2,
+            )
+        )["error"]
+        assert diagnostic["code"] == "INVALID_CASE"
+        assert "case.rules[0].requirement" in diagnostic["message"]
+        assert "private-customer-name" not in diagnostic["message"]
+        assert "DO_NOT_ECHO_CUSTOMER_VALUE" not in diagnostic["message"]
         trial.run("cli_import", command + ["import", "demo/failure.json", "--out", case])
         trial.run("cli_inspect", command + ["inspect", case, "--json"])
         trial.run("cli_propose", command + ["propose", case, "--out", "demo/proposal.json"])

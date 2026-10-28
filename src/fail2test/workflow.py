@@ -11,7 +11,7 @@ from typing import Any, Literal
 from pydantic import Field, ValidationError
 
 from fail2test.config import load_runner_config
-from fail2test.errors import Fail2TestError
+from fail2test.errors import Fail2TestError, validation_message
 from fail2test.jsonio import digest, read_json, write_json, write_text
 from fail2test.models import Case, RunResult, StrictModel
 from fail2test.supervisor import run_supervised
@@ -74,12 +74,17 @@ def review_case(
     target = case_path(path)
     manifest = load_manifest(target)
     data = read_json(target)
-    if rules is not None:
-        data["rules"] = rules
-    if data.get("provenance", {}).get("sanitization") == "review_required":
-        data["provenance"]["sanitization"] = "reviewed"
+    if isinstance(data, dict):
+        if rules is not None:
+            data["rules"] = rules
+        provenance = data.get("provenance")
+        if isinstance(provenance, dict) and provenance.get("sanitization") == "review_required":
+            provenance["sanitization"] = "reviewed"
     try:
         case = Case.model_validate(data)
+    except ValidationError as exc:
+        raise Fail2TestError("INVALID_REVIEW", validation_message(exc, Case)) from None
+    try:
         selected = selected_rule or case.rules[0].id
         if selected not in {rule.id for rule in case.rules}:
             raise ValueError
@@ -89,10 +94,10 @@ def review_case(
             selected_rule=selected,
             reviewed_at=datetime.now(UTC).isoformat(),
         )
-    except (ValidationError, ValueError) as exc:
+    except (ValidationError, ValueError):
         raise Fail2TestError(
             "INVALID_REVIEW", "Supply valid rules, reviewer label and a selected rule ID."
-        ) from exc
+        ) from None
     write_json(target, case.model_dump(mode="json"), overwrite=True)
     manifest.review, manifest.baseline = review, None
     save_manifest(target, manifest)

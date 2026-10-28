@@ -14,7 +14,7 @@ from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_ope
 
 from pydantic import Field, ValidationError, model_validator
 
-from fail2test.errors import Fail2TestError
+from fail2test.errors import Fail2TestError, validation_message
 from fail2test.jsonio import canonical, digest, loads_json, read_json
 from fail2test.models import Case, Rule, StrictModel
 from fail2test.privacy import sanitize
@@ -128,7 +128,7 @@ def preview(path: Path, *, config: Path, profile: str, requirement: str) -> dict
     try:
         Case.model_validate(candidate)
     except ValidationError as exc:
-        raise Fail2TestError("INVALID_CASE", "Repair the imported case schema first.") from exc
+        raise Fail2TestError("INVALID_CASE", validation_message(exc, Case)) from None
     summary = {
         key: raw[key] for key in ("title", "input", "model_fixtures", "tool_fixtures", "rules")
     }

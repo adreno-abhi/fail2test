@@ -9,6 +9,11 @@ not independent customer research, a penetration test or a prediction of GitHub 
 locally; see [packaging correction](packaging-scope-fix.md). Original findings and probe
 results below describe the reviewed baseline. Hosted checks for the correction remain pending.
 
+**28 October update:** the packaging correction subsequently merged as `53727aa` and
+passed [hosted CI](https://github.com/adreno-abhi/fail2test/actions/runs/40486569110).
+The separately approved [safe case diagnostics](safe-case-diagnostics.md) address the
+field-location and unknown-key disclosure finding locally; their new hosted checks remain pending.
+
 ## Recommendation
 
 The core is useful for a specific audience: Python developers who have a reproducible
@@ -78,7 +83,7 @@ No provider request, local model installation or real deletion/payment operation
 | Blocker | Source archive contained 225 members under ignored `local-artifacts/`; a minimal ignored nested-`tests` marker reproduced inclusion | Locally built source releases can contain unintended files even when Git is clean | Open: quarantine unpublished builds; use explicit root-path selection and add negative archive checks before release |
 | High | README lacked a clear audience/fit decision, clone instructions and expected output; important limits appeared after substantial detail | Visitors cannot quickly decide whether trying it is worthwhile | Corrected locally in this review |
 | High | Moving from demo to incident required a custom case/neutral trace and runner, but the clearest evidence explanation was inside the UI guide | “Upload a failure” suggests easier integration than exists | Added fit/evidence guides, full neutral JSON and explicit manual-conversion language; no recorder was implemented |
-| High | Invalid case errors suppress both values and field location; actual malformed-rule probe returned generic `INVALID_CASE` | Users hand-authoring strict JSON cannot readily find the bad field | Open: add privacy-safe schema field/error diagnostics without echoing evidence values |
+| High | Invalid case errors suppress both values and field location; actual malformed-rule probe returned generic `INVALID_CASE` | Users hand-authoring strict JSON cannot readily find the bad field | Addressed locally in the approved [safe diagnostics step](safe-case-diagnostics.md); hosted verification pending |
 | High | Independent existing-application adoption is unmeasured; owner trial was guided and used the maintained example | We cannot support broad “easy integration” or timing claims | Open: independent trial recommended; owner may explicitly accept the documented uncertainty instead of inventing evidence |
 | High | Security reporting/public protections and final release review are still pending | Trust and reporting routes must match the public repository | Open host/release work; keep gate closed |
 | Medium | Every model request is matched exactly; prompt/tool-schema edits can invalidate fixtures | Some developers will interpret mismatch as a broken test generator | Explained earlier; keep errors distinct from behavioral failures and live evaluation |

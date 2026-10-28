@@ -178,6 +178,7 @@ def test_browser_all_rule_templates_and_unapproved_proposals(page):
         page.get_by_role("button", name="Add template", exact=True).click()
     expect(page.locator("#rule-editors textarea")).to_have_count(5)
     page.get_by_role("button", name="Save case edits").click()
+
     expect(page.locator("#draft-state")).to_have_text("No unsaved changes.")
     expect(page.locator("#selected-rule option")).to_have_count(5)
     page.locator("#case-json").evaluate("element => element.closest('details').open = true")
@@ -275,3 +276,18 @@ def test_browser_upload_xss_keyboard_responsive_and_missing_evidence(page, case_
     assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
     ARTIFACTS.mkdir(parents=True, exist_ok=True)
     page.screenshot(path=str(ARTIFACTS / "review-mobile.png"), full_page=True)
+
+
+def test_case_error_identifies_field_and_preserves_draft(page):
+    sample(page)
+    page.get_by_role("tab", name="02 Review").click()
+    editor = page.locator("#rule-editors textarea").first
+    draft = json.dumps({"id": "read-only", "kind": "forbidden_tool", "tool": "delete"})
+    editor.fill(draft)
+    page.get_by_role("button", name="Save case edits").click()
+    expect(page.locator("#error")).to_contain_text("case.rules[0].requirement")
+    expect(page.locator("#error")).to_contain_text("Required field is missing")
+    expect(editor).to_have_value(draft)
+    expect(page.locator("#draft-state")).to_contain_text("Unsaved changes")
+    ARTIFACTS.mkdir(parents=True, exist_ok=True)
+    page.screenshot(path=str(ARTIFACTS / "safe-case-diagnostics.png"), full_page=True)

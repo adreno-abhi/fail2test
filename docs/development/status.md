@@ -5,6 +5,12 @@ release. The GitHub repository exists privately; no public release or registry u
 
 ## Current launch checkpoint
 
+28 October: the packaging correction merged as `53727aa` and passed
+[CI run 40486569110](https://github.com/adreno-abhi/fail2test/actions/runs/40486569110).
+The next approved local step adds [safe case diagnostics](safe-case-diagnostics.md)
+without changing validation/review semantics. Its own hosted verification remains pending.
+The earlier checkpoint descriptions below retain their recorded source scope.
+
 Merged `main` revision `345eced` passed [hosted CI](hosted-ci.md), including all six
 Windows/Ubuntu Python jobs, Chromium, packaging and installed acceptance. Current local
 and historical verification records below remain dated to their own source checkpoints.

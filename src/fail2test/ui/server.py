@@ -18,7 +18,7 @@ from urllib.parse import parse_qs, urlsplit
 from pydantic import ValidationError
 
 from fail2test.config import load_runner_config
-from fail2test.errors import Fail2TestError
+from fail2test.errors import Fail2TestError, validation_message
 from fail2test.ingest import import_data, propose_rules
 from fail2test.jsonio import MAX_BYTES, loads_json, read_json, write_json
 from fail2test.models import Case
@@ -260,7 +260,10 @@ class Workspace:
                         )
                     raw["rules"] = [loads_json(text) for text in data["rule_texts"]]
                 raw, changes = sanitize(raw)
-                case = Case.model_validate(raw)
+                try:
+                    case = Case.model_validate(raw)
+                except ValidationError as exc:
+                    raise Fail2TestError("INVALID_DATA", validation_message(exc, Case)) from None
                 manifest = load_manifest(target)
                 manifest.review, manifest.baseline = None, None
                 manifest.sanitization_changes.extend(changes)
@@ -382,8 +385,10 @@ def safe_error(exc: Exception) -> dict[str, str]:
     if isinstance(exc, Fail2TestError):
         return {"code": exc.code, "message": exc.message}
     if isinstance(exc, ValidationError):
-        fields = ", ".join(".".join(str(p) for p in e["loc"]) for e in exc.errors()[:5])
-        return {"code": "INVALID_DATA", "message": f"Check supported fields: {fields}."}
+        return {
+            "code": "INVALID_DATA",
+            "message": "Check the supported data/configuration contract.",
+        }
     return {
         "code": "INVALID_REQUEST",
         "message": "Check the input fields and workspace permissions.",

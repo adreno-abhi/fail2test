@@ -37,7 +37,9 @@ These are work items for one complete initial release, not a public alpha/beta s
 
 The [developer adoption review](docs/development/developer-adoption-review.md) identifies
 pre-launch improvements separately from future features. In particular, safe field-level
-case diagnostics and an independent existing-application trial remain priorities. Automatic
+case diagnostics are now implemented and tested locally; see the
+[verification record](docs/development/safe-case-diagnostics.md). Hosted verification and
+an independent existing-application trial remain priorities. Automatic
 evidence capture, vendor importers and async execution are candidates, not implemented promises.
 
 Welcome contributions through documented issues/PRs. Prioritize compatibility, reproducible bugs and real user needs. Evaluate additional importers/frameworks and execution modes only when there is a maintainer and acceptance evidence. Publish a supported-version and deprecation policy as the project matures.

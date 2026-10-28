@@ -1,9 +1,9 @@
 # GitHub setup and verification
 
-Updated 27 October 2026. The owner separately approved private repository creation,
-source push, Actions verification and the merge of CI repair PR #3. The repository is
-**private**, with `main` at `345eced5b4a1343998adde6b17f8c090ff960d74` passing
-[hosted CI](https://github.com/adreno-abhi/fail2test/actions/runs/40476938192).
+Updated 28 October 2026. The owner separately approved private repository creation,
+source push, Actions verification and merges of PRs #3, #4 and #5. The repository is
+**private**, with `main` at `97994307fbc19edd2e61fed47f4edaff43046912` passing
+[hosted CI](https://github.com/adreno-abhi/fail2test/actions/runs/40645352245).
 No public visibility, tag/release or PyPI publication has been authorized or performed.
 Approval between steps in [PLAN.md](../../../PLAN.md) still applies.
 
@@ -23,6 +23,9 @@ Approval between steps in [PLAN.md](../../../PLAN.md) still applies.
 - Private vulnerability reporting, public contributor access, final issue-form rendering,
   security-feature availability/configuration and final owner acceptance remain open.
   Account recovery/2FA are owner-held checks, not facts inferred from repository access.
+- Read-only security inspection on 28 October found dependency graph, Dependabot alerts
+  and security updates off. Enable available free controls in an approved host step and
+  verify actual coverage; see the [final review](../../development/final-release-review.md).
 - Two Dependabot PRs remain unmerged; the passing source candidate does not include them.
 
 The original preparation decisions below remain the setup specification. Statements about

@@ -2,15 +2,16 @@
 
 This is a local checklist, not permission to create a repository, push, upload a package or
 configure an account. The owner reviews one agreed step at a time through publication.
-The repository and remote are configured privately; merged `main` has passed hosted CI.
+The repository and remote are configured privately; merged `main` at `9799430` has passed hosted CI.
 No public release or package-registry publication has occurred.
 
-**Packaging blocker corrected locally:** the [developer adoption review](docs/development/developer-adoption-review.md#packaging-blocker-reproducible-finding-and-proposed-correction)
+**Packaging blocker corrected and verified on merged main:** the [developer adoption review](docs/development/developer-adoption-review.md#packaging-blocker-reproducible-finding-and-proposed-correction)
 found source builds could include ignored local artifacts. Explicit publication paths,
 negative real-build tests and pre-install archive guards now pass; fresh installed artifacts
 also pass. See the [correction record](docs/development/packaging-scope-fix.md). Earlier builds
-remain quarantined. Hosted verification of this change and the other public-launch checks
-are pending; a clean Git status alone is not an artifact-content check.
+remain quarantined. Hosted verification of packaging and safe diagnostics passed on `9799430`.
+Remaining public-launch checks are in the [final review](docs/development/final-release-review.md).
+A clean Git status alone is not an artifact-content check.
 
 The owner confirmed `adreno-abhi/fail2test` and `@adreno-abhi` and chose not to publish
 personal email. See the concrete [GitHub setup preparation](docs/release/github/SETUP.md),
@@ -60,8 +61,10 @@ to get a green check. Missing facts and false/non-boolean values fail the gate.
 - [x] Exercise the key-free tutorial, native integration, browser workflow, error paths and
       generated pytest broken/fixed behavior from built artifacts. Independent human integration
       remains unmeasured; see the [developer review](docs/development/developer-adoption-review.md).
-- [ ] Review untrusted input, privacy, provider consent, session/path controls and dependency risk.
-- [ ] Check documentation/schema/CLI consistency and known limitations. No fabricated badges,
+- [x] Review untrusted input, privacy, provider consent, session/path controls and locked dependency risk
+      for `9799430`; see the final review. Recheck the exact versioned candidate.
+- [x] Check documentation/schema/CLI consistency and known limitations for the reviewed source.
+      No fabricated badges,
       benchmarks, usage numbers, support SLAs or model-quality guarantees.
 
 ## Prepare an immutable candidate
@@ -96,7 +99,7 @@ to get a green check. Missing facts and false/non-boolean values fail the gate.
   and rerun the documented smoke path. Verify links and private report entry points.
 
 The CI workflow and Dependabot configuration are active on the private repository. CI on
-merged `main` revision `345eced` passed. No executable release/publishing workflow is supplied.
+merged `main` revision `9799430` passed. No executable release/publishing workflow is supplied.
 Further pushes, releases or visibility changes remain subject to the agreed owner-approved steps.
 
 ## Recovery and compatibility policy

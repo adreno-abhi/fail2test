@@ -69,5 +69,10 @@ unconfirmed. The harness now requests JSON for that validation step; a sequentia
 passed without relaxing the ten-second runner limit or retrying within the harness. This
 record does not relabel the first attempt as a pass or assert an unproved timeout diagnosis.
 
-Artifact hashes and acceptance events are retained in ignored local audit records. New
-hosted verification remains pending; these results do not authorize a push or public release.
+Artifact hashes and acceptance events are retained in ignored local audit records. PR #5 subsequently merged as `9799430`. All six matrix jobs, quality/browser/package
+and `ci-complete` passed on [merged-main run 40645352245](https://github.com/adreno-abhi/fail2test/actions/runs/40645352245),
+including 211 full-suite tests at 89% runtime coverage and installed acceptance. The PR's
+push run required one targeted retry after pinned uv download stalled before any tests;
+no source change or relaxed test was used. The fresh merged-main run passed without that
+retry. See the [final release review](final-release-review.md) for remaining launch checks.
+These checks do not authorize public visibility or a release.

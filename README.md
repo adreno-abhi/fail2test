@@ -8,6 +8,8 @@ Install from the tagged source checkout below. No PyPI upload has been made.
 ![Actual local UI: review a duplicate-refund failure, reproduce it, verify the supplied fixed runner and export pytest](docs/launch/assets/fail2test-demo.gif)
 
 [Watch the captioned demo](docs/launch/assets/fail2test-demo.mp4) ·
+[Follow the technical walkthrough](docs/site/duplicate-tool-regression.md) ·
+[Share integration feedback](https://github.com/adreno-abhi/fail2test/issues/10) ·
 [Prepare your evidence](docs/site/evidence.md) · [Integrate your application](docs/site/integration.md)
 
 The demo uses synthetic fixtures and switches between the included broken/fixed runners;

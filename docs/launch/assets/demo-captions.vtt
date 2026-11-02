@@ -1,0 +1,22 @@
+WEBVTT
+
+00:00:00.200 --> 00:00:04.700
+Synthetic duplicate refund. No API key or real payment service.
+
+00:00:04.700 --> 00:00:08.109
+Import recorded input and model/tool responses.
+
+00:00:08.109 --> 00:00:12.870
+Review the assertion: refund each order at most once.
+
+00:00:12.870 --> 00:00:17.000
+Baseline reproduced: the recorded failure is real in current code.
+
+00:00:17.000 --> 00:00:21.130
+Broken demo runner fails the reviewed regression.
+
+00:00:21.130 --> 00:00:24.620
+Switch to the supplied fixed runner: the same case passes.
+
+00:00:24.620 --> 00:00:27.820
+Save pytest and reviewed JSON fixtures into your test workflow.

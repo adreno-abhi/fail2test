@@ -3,6 +3,7 @@ site_url: https://adreno-abhi.github.io/fail2test/
 site_description: Turn recorded Python agent failures into reviewed pytest regressions that exercise current application code.
 repo_url: https://github.com/adreno-abhi/fail2test
 repo_name: GitHub
+edit_uri: edit/main/docs/site/
 docs_dir: docs/site
 site_dir: site
 theme: readthedocs

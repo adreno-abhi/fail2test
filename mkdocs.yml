@@ -6,6 +6,7 @@ nav:
   - Overview: index.md
   - Is it a fit?: adoption.md
   - Quickstart: quickstart.md
+  - Duplicate tool regression walkthrough: duplicate-tool-regression.md
   - Prepare evidence: evidence.md
   - Local browser UI: local-ui.md
   - AI suggestions: ai-suggestions.md

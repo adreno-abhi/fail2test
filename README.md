@@ -2,6 +2,8 @@
 
 Turn a recorded agent failure into a pytest regression that catches the bug in your current code.
 
+[Documentation and demo](https://adreno-abhi.github.io/fail2test/) · [Source walkthrough](docs/site/duplicate-tool-regression.md)
+
 **[v0.1.0 is released](https://github.com/adreno-abhi/fail2test/releases/tag/v0.1.0).**
 Install from the tagged source checkout below. No PyPI upload has been made.
 

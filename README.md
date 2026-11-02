@@ -2,9 +2,16 @@
 
 Turn a recorded agent failure into a pytest regression that catches the bug in your current code.
 
-**Status:** public open source project, version 0.1.0 available from this repository.
-The complete supported fixture workflow and hosted CI pass. No tagged GitHub release or
-PyPI upload has shipped yet. See [release notes](docs/release/0.1.0.md).
+**[v0.1.0 is released](https://github.com/adreno-abhi/fail2test/releases/tag/v0.1.0).**
+Install from the tagged source checkout below. No PyPI upload has been made.
+
+![Actual local UI: review a duplicate-refund failure, reproduce it, verify the supplied fixed runner and export pytest](docs/launch/assets/fail2test-demo.gif)
+
+[Watch the captioned demo](docs/launch/assets/fail2test-demo.mp4) ·
+[Prepare your evidence](docs/site/evidence.md) · [Integrate your application](docs/site/integration.md)
+
+The demo uses synthetic fixtures and switches between the included broken/fixed runners;
+it does not generate the fix. The exported pytest was separately executed and passed.
 
 Python 3.12–3.14 is tested on Windows and Ubuntu, including hosted CI.
 See [compatibility and measured acceptance](docs/site/compatibility.md) for exact versions,
@@ -40,7 +47,7 @@ With Git, Python 3.13 and [uv](https://docs.astral.sh/uv/getting-started/install
 clone the public repository and run the key-free example. No GitHub account or model key is required.
 
 ```text
-git clone https://github.com/adreno-abhi/fail2test.git
+git clone --branch v0.1.0 --depth 1 https://github.com/adreno-abhi/fail2test.git
 cd fail2test
 uv sync --locked
 uv run fail2test init local-artifacts/demo

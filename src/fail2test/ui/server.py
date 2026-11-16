@@ -7,7 +7,9 @@ import json
 import os
 import re
 import secrets
+import socket
 import threading
+import time
 import tomllib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from importlib.resources import files
@@ -410,6 +412,32 @@ class LocalServer(ThreadingHTTPServer):
         worker = self.workspace.thread
         if worker is not None:
             worker.join(timeout=45)
+
+    def shutdown_request(self, request: socket.socket | tuple[bytes, socket.socket]) -> None:
+        if not isinstance(request, socket.socket):
+            super().shutdown_request(request)
+            return
+        # An early HTTP rejection can race a body sent separately from its headers.
+        # Closing with incoming bytes still in flight can reset the TCP connection
+        # on Windows and discard the rejection response. Send FIN first, then give
+        # the peer a bounded opportunity to finish. Discard bytes without parsing.
+        try:
+            request.shutdown(socket.SHUT_WR)
+            deadline = time.monotonic() + 0.1
+            remaining = 64 * 1024
+            while remaining > 0:
+                timeout = deadline - time.monotonic()
+                if timeout <= 0:
+                    break
+                request.settimeout(timeout)
+                chunk = request.recv(min(8192, remaining))
+                if not chunk:
+                    break
+                remaining -= len(chunk)
+        except OSError:
+            pass  # Peer disconnects and the bounded receive timeout end draining.
+        finally:
+            super().shutdown_request(request)
 
 
 class Handler(BaseHTTPRequestHandler):

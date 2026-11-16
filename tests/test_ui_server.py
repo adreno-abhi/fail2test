@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import http.client
 import json
+import socket
 import threading
 import time
 
@@ -383,3 +384,69 @@ def test_bad_optional_ai_config_does_not_block_key_free_ui(ui_server):
     assert result["suggestion_error"]["code"] == "INVALID_AI_CONFIG"
     item = imported(ui_server)
     assert request(ui_server, "/api/propose", payload(item))[0] == 200
+
+
+@pytest.mark.parametrize(
+    "headers,code",
+    [
+        ({"Host": "evil.example:8765"}, "HOST_REJECTED"),
+        ({"Origin": "https://unrelated.example"}, "ORIGIN_REJECTED"),
+        ({"Authorization": "Bearer invalid"}, "SESSION_REQUIRED"),
+    ],
+)
+def test_rejection_response_survives_delayed_body(ui_server, headers, code):
+    for _ in range(3):
+        connection = http.client.HTTPConnection("127.0.0.1", ui_server.server_port, timeout=2)
+        supplied = {
+            "Host": ui_server.origin.removeprefix("http://"),
+            "Origin": ui_server.origin,
+            "Authorization": f"Bearer {ui_server.token}",
+            "Content-Type": "application/json",
+            "Content-Length": "18",
+        }
+        supplied.update(headers)
+        try:
+            connection.putrequest("POST", "/api/import-sample", skip_host=True)
+            for name, value in supplied.items():
+                connection.putheader(name, value)
+            connection.endheaders()
+            # Exercise the race between early rejection and a separately sent body.
+            time.sleep(0.01)
+            connection.send(b'{"name":"blocked"}')
+            response = connection.getresponse()
+            assert response.status in {401, 403}
+            assert json.loads(response.read())["error"]["code"] == code
+        finally:
+            connection.close()
+    assert not (ui_server.workspace.root / "cases/blocked").exists()
+
+
+def test_rejected_client_need_not_finish_its_body(ui_server):
+    with socket.create_connection(("127.0.0.1", ui_server.server_port), timeout=2) as connection:
+        connection.sendall(
+            b"POST /api/import-sample HTTP/1.1\r\nHost: evil.example:8765\r\n"
+            b"Content-Length: 10485761\r\n\r\n"
+        )
+        started = time.monotonic()
+        response = http.client.HTTPResponse(connection)
+        response.begin()
+        assert response.status == 403
+        assert json.loads(response.read())["error"]["code"] == "HOST_REJECTED"
+        # EOF must arrive even though the client never finishes or closes its upload.
+        assert connection.recv(1) == b""
+        assert time.monotonic() - started < 1
+    assert not (ui_server.workspace.root / "cases/blocked").exists()
+
+
+def test_graceful_close_stops_waiting_for_idle_peer(ui_server):
+    local, peer = socket.socketpair()
+    worker = threading.Thread(target=ui_server.shutdown_request, args=(local,), daemon=True)
+    try:
+        worker.start()
+        worker.join(timeout=1)
+        assert not worker.is_alive(), "An unfinished upload must not hold the handler open"
+        assert peer.recv(1) == b""
+    finally:
+        peer.close()
+        local.close()
+        worker.join(timeout=1)

@@ -4,7 +4,8 @@ Updated 16 November 2026 by Codex.
 
 ## Goal and authorization
 Review Dependabot PR #14 locally, correct compatibility/inventory issues and report readiness.
-Owner has not approved pushing this review, merging it, changing settings or publishing a release.
+Owner subsequently approved publishing the corrected PR14 work and running hosted CI.
+Merge, security-policy changes and package/tag publication are not authorized by that approval.
 
 ## Working trees
 Primary publication checkout: this repository's main working tree.
@@ -21,7 +22,7 @@ another agent. Original private development history must never be pushed to the 
 - No push/merge or credential/provider use in this step.
 
 ## Next steps
-Wait for owner approval to publish the corrected PR14 work and run required hosted CI.
+Publish corrected work to the existing Dependabot PR14 branch as a fast-forward and run hosted CI.
 Then recheck exact remote head and all Windows/Ubuntu Python 3.12–3.14 checks before proposing
 merge. The browser was signed out during the preceding read-only inspection.
 PR1 (Actions updates) remains separately pending and needs allowlist coordination.
@@ -31,7 +32,7 @@ A later patch release should address the recommended tagged dependency set; do n
 Initial overlapping checks had native timeouts and one Windows socket abort. Sequential unchanged
 checks passed. No timeouts/assertions were weakened; watch for recurrence in hosted CI.
 Review artifacts remain ignored. Pydantic lower bound and public tag were not changed.
-The primary checkout's `.ai` notes are local copies, not remotely published.
+The primary checkout's `.ai` notes are local copies; publish reviewed notes with the explicitly approved PR update.
 
 ## Suggested skills
 Use handoff for session continuity. For a recurring failure, consider diagnosing-bugs.

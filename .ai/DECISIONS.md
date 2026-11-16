@@ -7,3 +7,5 @@
   with original settings; do not label transient failures green or weaken tests/timeouts.
 - 2026-11-16 | codex | Keep handoff in `.ai/HANDOFF.md` per explicit owner instructions,
   overriding the handoff skill's temporary-directory default. No remote push for handoff.
+
+- 2026-11-16 | codex | Owner approved publishing corrected PR14 work and hosted verification; preserve the existing PR via a fast-forward push, with no merge or policy changes.

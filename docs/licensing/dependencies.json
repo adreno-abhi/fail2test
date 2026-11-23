@@ -1,8 +1,8 @@
 {
   "inventory_version": 1,
-  "review_date": "2026-11-16",
+  "review_date": "2026-11-23",
   "environment": "Windows, Python 3.13.5, all extras/groups",
-  "lock_sha256": "48d245e277ca6b895697793d39bfcdaf91438b70bae1cd73963f2adff63ad8b6",
+  "lock_sha256": "d437b4a0872d05f86c030ad5b76e7dab390059e0c6ff15e47dfb35b34449ab7a",
   "scope": "All locked third-party Python packages; no legal clearance or vulnerability scan",
   "packages": [
     {
@@ -358,22 +358,22 @@
     },
     {
       "name": "hypothesis",
-      "version": "6.170.15",
+      "version": "6.170.16",
       "direct_groups": [
         "development:dev"
       ],
-      "project_url": "https://pypi.org/project/hypothesis/6.170.15/",
+      "project_url": "https://pypi.org/project/hypothesis/6.170.16/",
       "license_expression": "MPL-2.0",
       "license_declaration": null,
       "license_classifiers": [],
       "evidence": "Installed distribution metadata and license-file hashes",
       "license_files": [
         {
-          "path": "hypothesis-6.170.15.dist-info/licenses/LICENSE.txt",
+          "path": "hypothesis-6.170.16.dist-info/licenses/LICENSE.txt",
           "sha256": "ac89037bac63550644dce8cf32c6765e5fab9dc1a1ce94b89f8a805f341a6750"
         }
       ],
-      "metadata_sha256": "cf8d1a1f4ea24e85f91649f9bf58b72ca10ef265f84cda02997f036963d326f9"
+      "metadata_sha256": "bf82a888df759b61fd3d81aa8091f57b20fbc49a9e668078fc2949e0450699eb"
     },
     {
       "name": "idna",
@@ -502,11 +502,11 @@
     },
     {
       "name": "langchain-core",
-      "version": "1.8.0",
+      "version": "1.8.4",
       "direct_groups": [
         "extra:langgraph"
       ],
-      "project_url": "https://pypi.org/project/langchain-core/1.8.0/",
+      "project_url": "https://pypi.org/project/langchain-core/1.8.4/",
       "license_expression": null,
       "license_declaration": "MIT",
       "license_classifiers": [
@@ -515,17 +515,17 @@
       "evidence": "Installed distribution metadata and license-file hashes",
       "license_files": [
         {
-          "path": "langchain_core-1.8.0.dist-info/licenses/LICENSE",
+          "path": "langchain_core-1.8.4.dist-info/licenses/LICENSE",
           "sha256": "4ec67e4ca6e6721dba849b2ca82261597c86a61ee214bbf21416006b7b2d0478"
         }
       ],
-      "metadata_sha256": "c28451b09207408b26eb5ace765eab8b5012276d45838b5db3e53cb8304c1974"
+      "metadata_sha256": "ec5bb344da5c11d6bb1ad987e439da941e6b5a658e1bb7fb09a51d0fe10fc711"
     },
     {
       "name": "langchain-protocol",
-      "version": "0.0.20",
+      "version": "0.0.22",
       "direct_groups": [],
-      "project_url": "https://pypi.org/project/langchain-protocol/0.0.20/",
+      "project_url": "https://pypi.org/project/langchain-protocol/0.0.22/",
       "license_expression": null,
       "license_declaration": "MIT",
       "license_classifiers": [
@@ -534,30 +534,30 @@
       "evidence": "Installed distribution metadata and license-file hashes",
       "license_files": [
         {
-          "path": "langchain_protocol-0.0.20.dist-info/licenses/LICENSE",
+          "path": "langchain_protocol-0.0.22.dist-info/licenses/LICENSE",
           "sha256": "893e6e30275896912c21c77f9f7c112aba85fd985d05b26a29424cf7e511d177"
         }
       ],
-      "metadata_sha256": "18e3ee4b2dd8feefab5c13d254efae6bbfec0c7d793b2422fac5ec3c1c0c15d9"
+      "metadata_sha256": "b9020b94e3a972722dc29a674b1cb4a3a15f3e0fdff3f3f0a30758b3f39cf5a5"
     },
     {
       "name": "langgraph",
-      "version": "1.2.21",
+      "version": "1.2.24",
       "direct_groups": [
         "extra:langgraph"
       ],
-      "project_url": "https://pypi.org/project/langgraph/1.2.21/",
+      "project_url": "https://pypi.org/project/langgraph/1.2.24/",
       "license_expression": "MIT",
       "license_declaration": null,
       "license_classifiers": [],
       "evidence": "Installed distribution metadata and license-file hashes",
       "license_files": [
         {
-          "path": "langgraph-1.2.21.dist-info/licenses/LICENSE",
+          "path": "langgraph-1.2.24.dist-info/licenses/LICENSE",
           "sha256": "d9bb52f2e3540d60ff50d8f0f5b6ba649b7fd346948c4c3d086c8afb120763c7"
         }
       ],
-      "metadata_sha256": "b866e06c9ff1ed469087a6a46649766a3202fed7f6e21aed03be5be614ac519c"
+      "metadata_sha256": "71dff603384ea28305f32fefbe2aca7b9dea48e0cf9648c09a088fb24b38ae0a"
     },
     {
       "name": "langgraph-checkpoint",
@@ -578,20 +578,20 @@
     },
     {
       "name": "langgraph-prebuilt",
-      "version": "1.1.1",
+      "version": "1.1.3",
       "direct_groups": [],
-      "project_url": "https://pypi.org/project/langgraph-prebuilt/1.1.1/",
+      "project_url": "https://pypi.org/project/langgraph-prebuilt/1.1.3/",
       "license_expression": "MIT",
       "license_declaration": null,
       "license_classifiers": [],
       "evidence": "Installed distribution metadata and license-file hashes",
       "license_files": [
         {
-          "path": "langgraph_prebuilt-1.1.1.dist-info/licenses/LICENSE",
+          "path": "langgraph_prebuilt-1.1.3.dist-info/licenses/LICENSE",
           "sha256": "d9bb52f2e3540d60ff50d8f0f5b6ba649b7fd346948c4c3d086c8afb120763c7"
         }
       ],
-      "metadata_sha256": "0c378432b6201dcf4b6641e642ce9f03e353515a155f15501a91fa7cdd401496"
+      "metadata_sha256": "b9ff4b4569d9783b74dfda2bf2c3463b5c1fc43511043ddb57d7b0d6910831d2"
     },
     {
       "name": "langgraph-sdk",
@@ -943,18 +943,18 @@
     },
     {
       "name": "playwright",
-      "version": "1.65.1",
+      "version": "1.65.2",
       "direct_groups": [
         "development:browser"
       ],
-      "project_url": "https://pypi.org/project/playwright/1.65.1/",
+      "project_url": "https://pypi.org/project/playwright/1.65.2/",
       "license_expression": "Apache-2.0",
       "license_declaration": null,
       "license_classifiers": [],
       "evidence": "Installed distribution metadata and license-file hashes",
       "license_files": [
         {
-          "path": "playwright-1.65.1.dist-info/licenses/LICENSE",
+          "path": "playwright-1.65.2.dist-info/licenses/LICENSE",
           "sha256": "7fab1461b41970ff376f1c9303a637076bfaaeb71cd12dd3a1c44aaf59a1a2b9"
         },
         {
@@ -970,7 +970,7 @@
           "sha256": "6d602191187b35b9b01d2cffa01c8469c2c8d9de8a96f1bf868e0f264f51c81d"
         }
       ],
-      "metadata_sha256": "91aa1f728b1c35050482098849ca50cac686befd065b5b6f3b9f80eaa891b808"
+      "metadata_sha256": "8878cdd1be854b1061e8390a82bd13357f2c74ed142973044dfb09038ba12612"
     },
     {
       "name": "pluggy",
@@ -993,39 +993,39 @@
     },
     {
       "name": "pydantic",
-      "version": "2.14.3",
+      "version": "2.14.4",
       "direct_groups": [
         "runtime"
       ],
-      "project_url": "https://pypi.org/project/pydantic/2.14.3/",
+      "project_url": "https://pypi.org/project/pydantic/2.14.4/",
       "license_expression": "MIT",
       "license_declaration": null,
       "license_classifiers": [],
       "evidence": "Installed distribution metadata and license-file hashes",
       "license_files": [
         {
-          "path": "pydantic-2.14.3.dist-info/licenses/LICENSE",
+          "path": "pydantic-2.14.4.dist-info/licenses/LICENSE",
           "sha256": "a9e186f3ca16b5eef84318e7a701721351a00cb7b8ae3a4394b67b49e3529ef3"
         }
       ],
-      "metadata_sha256": "c3eb8984172bedc8e056655e1419351f4497374a91b7b709dbc4a1340f50e1e9"
+      "metadata_sha256": "8f5e54d1880bfcdd9a002ae23f584484f73347b8e67b9c0697fd2a450dc2baae"
     },
     {
       "name": "pydantic-core",
-      "version": "2.50.4",
+      "version": "2.50.5",
       "direct_groups": [],
-      "project_url": "https://pypi.org/project/pydantic-core/2.50.4/",
+      "project_url": "https://pypi.org/project/pydantic-core/2.50.5/",
       "license_expression": "MIT",
       "license_declaration": null,
       "license_classifiers": [],
       "evidence": "Installed distribution metadata and license-file hashes",
       "license_files": [
         {
-          "path": "pydantic_core-2.50.4.dist-info/licenses/LICENSE",
+          "path": "pydantic_core-2.50.5.dist-info/licenses/LICENSE",
           "sha256": "fbe7f615f18d135c07000e5a86325db27f42c7729699ef166ac1f7a3f4586bf4"
         }
       ],
-      "metadata_sha256": "bb1956097beb504f190f8ea20c859b5dfea567679a247ce252d7813dd73f361d"
+      "metadata_sha256": "e2974df53f117ed0aa9af6b0ca3de6ee75ec50e774cf8a7499c8f80eaca07b75"
     },
     {
       "name": "pygments",
@@ -1261,22 +1261,22 @@
     },
     {
       "name": "ruff",
-      "version": "0.17.5",
+      "version": "0.17.6",
       "direct_groups": [
         "development:dev"
       ],
-      "project_url": "https://pypi.org/project/ruff/0.17.5/",
+      "project_url": "https://pypi.org/project/ruff/0.17.6/",
       "license_expression": "MIT",
       "license_declaration": null,
       "license_classifiers": [],
       "evidence": "Installed distribution metadata and license-file hashes",
       "license_files": [
         {
-          "path": "ruff-0.17.5.dist-info/licenses/LICENSE",
+          "path": "ruff-0.17.6.dist-info/licenses/LICENSE",
           "sha256": "2597d854122b77ddc71971564ca2350a37608575ce324adc5650a2b2051c8f18"
         }
       ],
-      "metadata_sha256": "76d5ce452550dd2a8ad1ec0f077f6d48cabad2ff889c796ccf3a52c4883db7c9"
+      "metadata_sha256": "1c69fd41fc379184e6a05c90249589cf7289fb6548219aba2ea5a53594bcdad8"
     },
     {
       "name": "shellingham",
@@ -1399,18 +1399,18 @@
     },
     {
       "name": "typer",
-      "version": "0.29.1",
+      "version": "0.29.2",
       "direct_groups": [
         "runtime"
       ],
-      "project_url": "https://pypi.org/project/typer/0.29.1/",
+      "project_url": "https://pypi.org/project/typer/0.29.2/",
       "license_expression": "MIT",
       "license_declaration": null,
       "license_classifiers": [],
       "evidence": "Installed distribution metadata and license-file hashes",
       "license_files": [
         {
-          "path": "typer-0.29.1.dist-info/licenses/LICENSE",
+          "path": "typer-0.29.2.dist-info/licenses/LICENSE",
           "sha256": "58992cebcf8dfb6e40c4e2112ed12126c243666dca3912a3d78b7ecac4859d49"
         },
         {
@@ -1418,7 +1418,7 @@
           "sha256": "9a8ad106a394e853bfe21f42f4e72d592819a22805d991b5f3275029292b658d"
         }
       ],
-      "metadata_sha256": "7d93474ee948d819285bd24bdeb3da02c5d4d63b0f51bb40d2413fd600540ba7"
+      "metadata_sha256": "e6df68329422d6941e7c931d8155fb7b2b9313f1f99af764abe0439b71cdfe47"
     },
     {
       "name": "typing-extensions",

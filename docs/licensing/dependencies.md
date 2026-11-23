@@ -1,6 +1,6 @@
 # Locked dependency licenses
 
-Generated from `uv.lock` and distribution metadata on 2026-11-16.
+Generated from `uv.lock` and distribution metadata on 2026-11-23.
 See [scope and exceptions](../../THIRD_PARTY_NOTICES.md). Empty groups mean transitive;
 the lockfile graph determines which extras/platforms actually install a package.
 
@@ -25,7 +25,7 @@ the lockfile graph determines which extras/platforms actually install a package.
 | [httpx](https://pypi.org/project/httpx/0.28.1/) | 0.28.1 | BSD-3-Clause | transitive |
 | [httpx2](https://pypi.org/project/httpx2/2.16.0/) | 2.16.0 | BSD-3-Clause | transitive |
 | [httpx2-jsfetch](https://pypi.org/project/httpx2-jsfetch/1.0/) | 1.0 | BSD-3-Clause | transitive |
-| [hypothesis](https://pypi.org/project/hypothesis/6.170.15/) | 6.170.15 | MPL-2.0 | development:dev |
+| [hypothesis](https://pypi.org/project/hypothesis/6.170.16/) | 6.170.16 | MPL-2.0 | development:dev |
 | [idna](https://pypi.org/project/idna/3.20/) | 3.20 | BSD-3-Clause | transitive |
 | [iniconfig](https://pypi.org/project/iniconfig/2.3.1/) | 2.3.1 | MIT | transitive |
 | [jinja2](https://pypi.org/project/jinja2/3.1.6/) | 3.1.6 | License :: OSI Approved :: BSD License | transitive |
@@ -33,11 +33,11 @@ the lockfile graph determines which extras/platforms actually install a package.
 | [jsonpointer](https://pypi.org/project/jsonpointer/3.5/) | 3.5 | Modified BSD License | transitive |
 | [jsonschema](https://pypi.org/project/jsonschema/4.26.0/) | 4.26.0 | MIT | development:dev |
 | [jsonschema-specifications](https://pypi.org/project/jsonschema-specifications/2025.9.1/) | 2025.9.1 | MIT | transitive |
-| [langchain-core](https://pypi.org/project/langchain-core/1.8.0/) | 1.8.0 | MIT | extra:langgraph |
-| [langchain-protocol](https://pypi.org/project/langchain-protocol/0.0.20/) | 0.0.20 | MIT | transitive |
-| [langgraph](https://pypi.org/project/langgraph/1.2.21/) | 1.2.21 | MIT | extra:langgraph |
+| [langchain-core](https://pypi.org/project/langchain-core/1.8.4/) | 1.8.4 | MIT | extra:langgraph |
+| [langchain-protocol](https://pypi.org/project/langchain-protocol/0.0.22/) | 0.0.22 | MIT | transitive |
+| [langgraph](https://pypi.org/project/langgraph/1.2.24/) | 1.2.24 | MIT | extra:langgraph |
 | [langgraph-checkpoint](https://pypi.org/project/langgraph-checkpoint/4.3.0/) | 4.3.0 | MIT | transitive |
-| [langgraph-prebuilt](https://pypi.org/project/langgraph-prebuilt/1.1.1/) | 1.1.1 | MIT | transitive |
+| [langgraph-prebuilt](https://pypi.org/project/langgraph-prebuilt/1.1.3/) | 1.1.3 | MIT | transitive |
 | [langgraph-sdk](https://pypi.org/project/langgraph-sdk/0.4.9/) | 0.4.9 | MIT | transitive |
 | [langsmith](https://pypi.org/project/langsmith/0.14.12/) | 0.14.12 | MIT | transitive |
 | [librt](https://pypi.org/project/librt/0.16.0/) | 0.16.0 | MIT | transitive |
@@ -55,10 +55,10 @@ the lockfile graph determines which extras/platforms actually install a package.
 | [packaging](https://pypi.org/project/packaging/26.3/) | 26.3 | Apache-2.0 OR BSD-2-Clause | transitive |
 | [pathspec](https://pypi.org/project/pathspec/1.1.1/) | 1.1.1 | License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0) | transitive |
 | [platformdirs](https://pypi.org/project/platformdirs/4.13.5/) | 4.13.5 | MIT | transitive |
-| [playwright](https://pypi.org/project/playwright/1.65.1/) | 1.65.1 | Apache-2.0 | development:browser |
+| [playwright](https://pypi.org/project/playwright/1.65.2/) | 1.65.2 | Apache-2.0 | development:browser |
 | [pluggy](https://pypi.org/project/pluggy/1.7.0/) | 1.7.0 | MIT | transitive |
-| [pydantic](https://pypi.org/project/pydantic/2.14.3/) | 2.14.3 | MIT | runtime |
-| [pydantic-core](https://pypi.org/project/pydantic-core/2.50.4/) | 2.50.4 | MIT | transitive |
+| [pydantic](https://pypi.org/project/pydantic/2.14.4/) | 2.14.4 | MIT | runtime |
+| [pydantic-core](https://pypi.org/project/pydantic-core/2.50.5/) | 2.50.5 | MIT | transitive |
 | [pygments](https://pypi.org/project/pygments/2.21.0/) | 2.21.0 | BSD-2-Clause | transitive |
 | [pytest](https://pypi.org/project/pytest/9.2.0/) | 9.2.0 | MIT | extra:pytest, development:dev |
 | [pytest-cov](https://pypi.org/project/pytest-cov/7.1.0/) | 7.1.0 | MIT | development:dev |
@@ -71,14 +71,14 @@ the lockfile graph determines which extras/platforms actually install a package.
 | [rfc8785](https://pypi.org/project/rfc8785/0.1.4/) | 0.1.4 | License :: OSI Approved :: Apache Software License | runtime |
 | [rich](https://pypi.org/project/rich/15.0.0/) | 15.0.0 | MIT | transitive |
 | [rpds-py](https://pypi.org/project/rpds-py/2026.9.1/) | 2026.9.1 | MIT | transitive |
-| [ruff](https://pypi.org/project/ruff/0.17.5/) | 0.17.5 | MIT | development:dev |
+| [ruff](https://pypi.org/project/ruff/0.17.6/) | 0.17.6 | MIT | development:dev |
 | [shellingham](https://pypi.org/project/shellingham/1.5.4/) | 1.5.4 | ISC License | transitive |
 | [six](https://pypi.org/project/six/1.17.0/) | 1.17.0 | MIT | transitive |
 | [sniffio](https://pypi.org/project/sniffio/1.3.1/) | 1.3.1 | MIT OR Apache-2.0 | transitive |
 | [sortedcontainers](https://pypi.org/project/sortedcontainers/2.4.0/) | 2.4.0 | Apache 2.0 | transitive |
 | [tenacity](https://pypi.org/project/tenacity/9.2.1/) | 9.2.1 | Apache-2.0 | transitive |
 | [truststore](https://pypi.org/project/truststore/0.10.5/) | 0.10.5 | MIT | transitive |
-| [typer](https://pypi.org/project/typer/0.29.1/) | 0.29.1 | MIT | runtime |
+| [typer](https://pypi.org/project/typer/0.29.2/) | 0.29.2 | MIT | runtime |
 | [typing-extensions](https://pypi.org/project/typing-extensions/4.16.0/) | 4.16.0 | PSF-2.0 | transitive |
 | [typing-inspection](https://pypi.org/project/typing-inspection/0.4.4/) | 0.4.4 | MIT | transitive |
 | [tzdata](https://pypi.org/project/tzdata/2026.5/) | 2026.5 | Apache-2.0 | transitive |
